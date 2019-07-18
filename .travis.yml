@@ -1,1 +1,9 @@
-
+language: generic
+deploy:
+  provider: s3
+  access_key_id: "$AWS_ACCESS_KEY"
+  secret_access_key: "$AWS_SECRET_KEY"
+  bucket: "$BUCKET"
+  region: "$REGION"
+  acl: public_read
+  skip_cleanup: true
