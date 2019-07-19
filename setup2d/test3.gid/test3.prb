@@ -1,14 +1,14 @@
 PROBLEM DATA
 QUESTION: Maximum_number_time_steps:
-VALUE: 100000000
+VALUE: 3.33e+07
 QUESTION: Gravity_(m/s2):
 VALUE: -9.8
 QUESTION: Time_step_(s):
-VALUE: 1e-8
+VALUE: 3.0e-08
 QUESTION: Output_frequency:
-VALUE: 1000000
+VALUE: 3.33e+05
 QUESTION: Restart_save_frequency:
-VALUE: 100000000
+VALUE: 3.33e+07
 QUESTION: Gravity_settling_stage_(s):
 VALUE: 0.0
 QUESTION: Load_ramping_stage_(s):
@@ -28,7 +28,7 @@ VALUE: 1.0e-07
 QUESTION: Maximum_contacting_couples:
 VALUE: 10000000
 QUESTION: Buffer_size_for_NBS_(m):
-VALUE: 0.0000413
+VALUE: 4.13e-05
 QUESTION: Accuracy#CB#(64bit,32bit)
 VALUE: 32bit
 QUESTION: Joint_friction_model#CB#(Coulomb,Barton-Bandis)

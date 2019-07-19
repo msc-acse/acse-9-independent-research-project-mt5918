@@ -6,7 +6,7 @@ VALUE: 3e+10
 QUESTION: Poisson's_ratio:
 VALUE: 0.205
 QUESTION: Mass_damping_coefficient:
-VALUE: 300
+VALUE: 0
 QUESTION: Elastic_penalty_term_(Pa):
 VALUE: 3.0e+11
 QUESTION: Contact_penalty_term_(Pa):
@@ -42,7 +42,7 @@ VALUE: 2500
 QUESTION: Young's_modulus_(Pa):
 VALUE: 7e10
 QUESTION: Poisson's_ratio:
-VALUE: 0.22
+VALUE: 0.23
 QUESTION: Mass_damping_coefficient:
 VALUE: 0
 QUESTION: Elastic_penalty_term_(Pa):
@@ -54,7 +54,7 @@ VALUE: 10
 QUESTION: Mode_II_energy_rate_(J/m2):
 VALUE: 50
 QUESTION: Tensile_strength_(Pa):
-VALUE: 6e7
+VALUE: 3.46e7
 QUESTION: Internal_friction_coeff.:
 VALUE: 0.1
 QUESTION: Internal_cohesion_(Pa):
