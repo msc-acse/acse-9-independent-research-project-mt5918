@@ -8,7 +8,7 @@ VALUE: 1.0e-06
 QUESTION: Output_frequency:
 VALUE: 10000
 QUESTION: Restart_save_frequency:
-VALUE: 100000
+VALUE: 1000000
 QUESTION: Gravity_settling_stage_(s):
 VALUE: 0.0
 QUESTION: Load_ramping_stage_(s):

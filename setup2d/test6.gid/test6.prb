@@ -1,14 +1,14 @@
 PROBLEM DATA
 QUESTION: Maximum_number_time_steps:
-VALUE: 333000
+VALUE: 3330000
 QUESTION: Gravity_(m/s2):
 VALUE: -9.8
 QUESTION: Time_step_(s):
 VALUE: 3e-06
 QUESTION: Output_frequency:
-VALUE: 3330
+VALUE: 33300
 QUESTION: Restart_save_frequency:
-VALUE: 333000
+VALUE: 3330000
 QUESTION: Gravity_settling_stage_(s):
 VALUE: 0.0
 QUESTION: Load_ramping_stage_(s):

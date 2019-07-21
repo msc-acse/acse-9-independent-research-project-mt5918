@@ -11,15 +11,15 @@ mkdir ${EPHEMERAL}/${PBS_JOBID}
 cp -r $HOME/project/setup2d/* $EPHEMERAL/${PBS_JOBID}
 
 userfile=user.txt
-testfile=$(sed '2q;d' $userfile)
+testfile=$(sed '4q;d' $userfile)
 echo "$testfile"
-login=$(sed '4q;d' $userfile)
+login=$(sed '6q;d' $userfile)
 echo "$login"
-hpcdir=$(sed '6q;d' $userfile)
+hpcdir=$(sed '8q;d' $userfile)
 echo "$hpcdir"
-localdir=$(sed '8q;d' $userfile)
+localdir=$(sed '10q;d' $userfile)
 echo "$localdir"
-qsubdir=$(sed '10q;d' $userfile)
+qsubdir=$(sed '12q;d' $userfile)
 echo "$qsubdir"
 
 testfilename=$(echo "$testfile" | cut -f 1 -d '.')
