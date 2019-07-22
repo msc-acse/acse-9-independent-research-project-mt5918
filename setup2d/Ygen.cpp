@@ -10,7 +10,7 @@ class Variables
 
 };
 
-class ProblemVariables: public Variables
+class ProblemVariables : public Variables
 {
 
 private:
@@ -35,6 +35,7 @@ private:
 
 	int currentdt;
 	double coordsize;
+	int contcouples;
 
 public:
 	ProblemVariables(std::vector <std::string> lines);   // This is the constructor declaration
@@ -62,6 +63,7 @@ public:
 
 	double getcurrentdt() { return this->currentdt; };
 	double getcoordsize() { return this->coordsize; };
+	double getcontcouples() { return this->contcouples; };
 
 	void setaccuracy(std::string accuracy) { this->accuracy = accuracy; }
 	void setfricmodel(std::string fricmodel) { this->fricmodel = fricmodel; }
@@ -85,6 +87,7 @@ public:
 
 	void setcurrentdt(int currentdt) { this->currentdt = currentdt; }
 	void setcoordsize(int coordsize) { this->coordsize = coordsize; }
+	void setcontcouples(int contcouples) { this->contcouples = contcouples; }
 };
 
 ProblemVariables::ProblemVariables(std::vector <std::string> lines)
@@ -107,6 +110,7 @@ ProblemVariables::ProblemVariables(std::vector <std::string> lines)
 
 	ProblemVariables::setcurrentdt(double(0));
 	ProblemVariables::setcoordsize(double(1));
+	ProblemVariables::setcontcouples(0);
 }
 
 class BonusVariables : public Variables
@@ -425,7 +429,7 @@ void Outfile::writecontrol(UserVariables User, ProblemVariables Problem, BonusVa
 		outfile << "\t\t/ YD / YDC / DCSIZF "	<< std::setprecision(11)	<< std::scientific	<< Problem.getmaxforce()	<< "\n"; // Maximum size of force in any direction(corresponding outputs are normalized using this value)
 		outfile << "\t\t/ YD / YDC / DCSIZS "	<< std::setprecision(11)	<< std::scientific	<< Problem.getmaxstress()	<< "\n"; //Maximum stress (buffer size)
 		outfile << "\t\t/ YD / YDC / DCSIZV "	<< std::setprecision(11)	<< std::scientific	<< Problem.getmaxv()		<< "\n"; //Maximum size of velocity in any direction (corresponding outputs are normalized using this value)
-		outfile << "\t\t/ YD / YDC / DCSIZD "	<< std::setprecision(11)	<< std::scientific	<< +2.00000000000e+000		<< "\n"; //Maximum size of displacement in any direction
+		outfile << "\t\t/ YD / YDC / DCSIZD "	<< std::setprecision(11)	<< std::scientific	<< Problem.getmaxdispl()	<< "\n"; //Maximum size of displacement in any direction
 		outfile << "\t\t/ YD / YDC / DCSIZA "	<< std::setprecision(11)	<< std::scientific	<< +1.00000000000e-007		<< "\n"; //Maximum joint aperture
 		outfile << "\t\t/ YD / YDC / DCSTEC "	<< std::setprecision(11)	<< std::scientific	<< +1.00000000000e-006		<< "\n"; //Size of the time step (see in the book how to calculate critical-maximum time step)
 		outfile << "\t\t/ YD / YDC / DCTIME "	<< std::setprecision(11)	<< std::scientific	<< +0.00000000000e+000		<< "\n"; //Current time. i.e. time at start of this run.
@@ -452,211 +456,211 @@ void Outfile::writeelements(UserVariables User, ProblemVariables Problem, BonusV
 	if (outfile.is_open())
 	{
 		outfile << "\t\t/*   Elements     */\n";
-		outfile << "/ YD / YDE / MELEM  1910																																																																																																																																																																																																																																								\n";
-		outfile << "	/ YD / YDE / NELEM   190																																																																																																																																																																																																																																							\n";
-		outfile << "	/ YD / YDE / MELST     2																																																																																																																																																																																																																																							\n";
-		outfile << "	/ YD / YDE / NELST     2																																																																																																																																																																																																																																							\n";
-		outfile << "	/ YD / YDE / MELNO     4																																																																																																																																																																																																																																							\n";
-		outfile << "	/ YD / YDE / NELNO     3																																																																																																																																																																																																																																							\n";
-		outfile << "	/ YD / YDE / D2ELST    21   190     0																																																																																																																																																																																																																																				\n";
-		outfile << "	/ YD / YDE / I1ELCF   190																																																																																																																																																																																																																																							\n";
-		outfile << "	- 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1																																																\n";
-		outfile << "	/ YD / YDE / I1ELTY   190																																																																																																																																																																																																																																							\n";
-		outfile << "	- 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1																																																\n";
-		outfile << "	/ YD / YDE / I1ELPR   190																																																																																																																																																																																																																																							\n";
-		outfile << "	1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0 	\n";
-		outfile << "	/ YD / YDE / I2ELTO    21     3   190																																																																																																																																																																																																																																				\n";
-		outfile << "	4      9      7																																																																																																																																																																																																																																										\n";
-		outfile << "	130    129    125																																																																																																																																																																																																																																									\n";
-		outfile << "	0      1      2																																																																																																																																																																																																																																										\n";
-		outfile << "	128    127    123																																																																																																																																																																																																																																									\n";
-		outfile << "	127    126    122																																																																																																																																																																																																																																									\n";
-		outfile << "	129    128    124																																																																																																																																																																																																																																									\n";
-		outfile << "	9     14     16																																																																																																																																																																																																																																										\n";
-		outfile << "	1      4      3																																																																																																																																																																																																																																										\n";
-		outfile << "	7      9     16																																																																																																																																																																																																																																										\n";
-		outfile << "	124    128    123																																																																																																																																																																																																																																									\n";
-		outfile << "	124    123    118																																																																																																																																																																																																																																									\n";
-		outfile << "	118    123    119																																																																																																																																																																																																																																									\n";
-		outfile << "	124    118    121																																																																																																																																																																																																																																									\n";
-		outfile << "	123    127    122																																																																																																																																																																																																																																									\n";
-		outfile << "	3      4      7																																																																																																																																																																																																																																										\n";
-		outfile << "	3      7      8																																																																																																																																																																																																																																										\n";
-		outfile << "	3      8      5																																																																																																																																																																																																																																										\n";
-		outfile << "	8      7     12																																																																																																																																																																																																																																										\n";
-		outfile << "	129    124    125																																																																																																																																																																																																																																									\n";
-		outfile << "	1      3      2																																																																																																																																																																																																																																										\n";
-		outfile << "	12      7     16																																																																																																																																																																																																																																									\n";
-		outfile << "	5      8     10																																																																																																																																																																																																																																										\n";
-		outfile << "	121    118    116																																																																																																																																																																																																																																									\n";
-		outfile << "	119    123    122																																																																																																																																																																																																																																									\n";
-		outfile << "	3      5      2																																																																																																																																																																																																																																										\n";
-		outfile << "	8     12     13																																																																																																																																																																																																																																										\n";
-		outfile << "	124    121    125																																																																																																																																																																																																																																									\n";
-		outfile << "	118    119    115																																																																																																																																																																																																																																									\n";
-		outfile << "	13     18     22																																																																																																																																																																																																																																									\n";
-		outfile << "	115    117    113																																																																																																																																																																																																																																									\n";
-		outfile << "	116    118    115																																																																																																																																																																																																																																									\n";
-		outfile << "	10      8     13																																																																																																																																																																																																																																									\n";
-		outfile << "	121    116    120																																																																																																																																																																																																																																									\n";
-		outfile << "	5     10      6																																																																																																																																																																																																																																										\n";
-		outfile << "	17     11     15																																																																																																																																																																																																																																									\n";
-		outfile << "	15     11     10																																																																																																																																																																																																																																									\n";
-		outfile << "	17     15     21																																																																																																																																																																																																																																									\n";
-		outfile << "	17     21     23																																																																																																																																																																																																																																									\n";
-		outfile << "	21     15     19																																																																																																																																																																																																																																									\n";
-		outfile << "	19     15     10																																																																																																																																																																																																																																									\n";
-		outfile << "	21     19     25																																																																																																																																																																																																																																									\n";
-		outfile << "	25     19     24																																																																																																																																																																																																																																									\n";
-		outfile << "	24     19     20																																																																																																																																																																																																																																									\n";
-		outfile << "	24     20     26																																																																																																																																																																																																																																									\n";
-		outfile << "	20     19     13																																																																																																																																																																																																																																									\n";
-		outfile << "	25     24     29																																																																																																																																																																																																																																									\n";
-		outfile << "	29     24     30																																																																																																																																																																																																																																									\n";
-		outfile << "	25     29     31																																																																																																																																																																																																																																									\n";
-		outfile << "	25     31     27																																																																																																																																																																																																																																									\n";
-		outfile << "	25     27     21																																																																																																																																																																																																																																									\n";
-		outfile << "	21     27     23																																																																																																																																																																																																																																									\n";
-		outfile << "	23     27     28																																																																																																																																																																																																																																									\n";
-		outfile << "	27     31     32																																																																																																																																																																																																																																									\n";
-		outfile << "	32     31     36																																																																																																																																																																																																																																									\n";
-		outfile << "	36     31     33																																																																																																																																																																																																																																									\n";
-		outfile << "	36     33     39																																																																																																																																																																																																																																									\n";
-		outfile << "	39     33     38																																																																																																																																																																																																																																									\n";
-		outfile << "	32     36     37																																																																																																																																																																																																																																									\n";
-		outfile << "	37     36     41																																																																																																																																																																																																																																									\n";
-		outfile << "	37     41     42																																																																																																																																																																																																																																									\n";
-		outfile << "	42     41     50																																																																																																																																																																																																																																									\n";
-		outfile << "	42     50     55																																																																																																																																																																																																																																									\n";
-		outfile << "	55     50     66																																																																																																																																																																																																																																									\n";
-		outfile << "	66     50     62																																																																																																																																																																																																																																									\n";
-		outfile << "	62     50     46																																																																																																																																																																																																																																									\n";
-		outfile << "	46     50     41																																																																																																																																																																																																																																									\n";
-		outfile << "	46     41     39																																																																																																																																																																																																																																									\n";
-		outfile << "	46     39     45																																																																																																																																																																																																																																									\n";
-		outfile << "	39     41     36																																																																																																																																																																																																																																									\n";
-		outfile << "	62     46     58																																																																																																																																																																																																																																									\n";
-		outfile << "	31     29     33																																																																																																																																																																																																																																									\n";
-		outfile << "	33     29     34																																																																																																																																																																																																																																									\n";
-		outfile << "	55     66     70																																																																																																																																																																																																																																									\n";
-		outfile << "	55     70     64																																																																																																																																																																																																																																									\n";
-		outfile << "	64     70     77																																																																																																																																																																																																																																									\n";
-		outfile << "	70     66     78																																																																																																																																																																																																																																									\n";
-		outfile << "	70     78     83																																																																																																																																																																																																																																									\n";
-		outfile << "	83     78     94																																																																																																																																																																																																																																									\n";
-		outfile << "	83     94     99																																																																																																																																																																																																																																									\n";
-		outfile << "	99     94    103																																																																																																																																																																																																																																									\n";
-		outfile << "	103     94    101																																																																																																																																																																																																																																									\n";
-		outfile << "	101     94     90																																																																																																																																																																																																																																									\n";
-		outfile << "	101     90    100																																																																																																																																																																																																																																									\n";
-		outfile << "	90     94     78																																																																																																																																																																																																																																									\n";
-		outfile << "	90     78     75																																																																																																																																																																																																																																									\n";
-		outfile << "	75     78     66																																																																																																																																																																																																																																									\n";
-		outfile << "	75     66     62																																																																																																																																																																																																																																									\n";
-		outfile << "	75     62     72																																																																																																																																																																																																																																									\n";
-		outfile << "	90     75     87																																																																																																																																																																																																																																									\n";
-		outfile << "	99    103    104																																																																																																																																																																																																																																									\n";
-		outfile << "	104    103    108																																																																																																																																																																																																																																									\n";
-		outfile << "	104    108    109																																																																																																																																																																																																																																									\n";
-		outfile << "	109    108    112																																																																																																																																																																																																																																									\n";
-		outfile << "	99    104    102																																																																																																																																																																																																																																									\n";
-		outfile << "	102    104    107																																																																																																																																																																																																																																									\n";
-		outfile << "	108    103    106																																																																																																																																																																																																																																									\n";
-		outfile << "	106    103    101																																																																																																																																																																																																																																									\n";
-		outfile << "	106    101    105																																																																																																																																																																																																																																									\n";
-		outfile << "	108    106    111																																																																																																																																																																																																																																									\n";
-		outfile << "	111    106    110																																																																																																																																																																																																																																									\n";
-		outfile << "	108    111    112																																																																																																																																																																																																																																									\n";
-		outfile << "	112    111    116																																																																																																																																																																																																																																									\n";
-		outfile << "	112    116    115																																																																																																																																																																																																																																									\n";
-		outfile << "	112    115    109																																																																																																																																																																																																																																									\n";
-		outfile << "	104    109    107																																																																																																																																																																																																																																									\n";
-		outfile << "	107    109    113																																																																																																																																																																																																																																									\n";
-		outfile << "	70     83     77																																																																																																																																																																																																																																									\n";
-		outfile << "	77     83     93																																																																																																																																																																																																																																									\n";
-		outfile << "	32     37     35																																																																																																																																																																																																																																									\n";
-		outfile << "	35     37     40																																																																																																																																																																																																																																									\n";
-		outfile << "	83     99     93																																																																																																																																																																																																																																									\n";
-		outfile << "	93     99    102																																																																																																																																																																																																																																									\n";
-		outfile << "	42     55     49																																																																																																																																																																																																																																									\n";
-		outfile << "	49     55     64																																																																																																																																																																																																																																									\n";
-		outfile << "	27     32     28																																																																																																																																																																																																																																									\n";
-		outfile << "	28     32     35																																																																																																																																																																																																																																									\n";
-		outfile << "	37     42     40																																																																																																																																																																																																																																									\n";
-		outfile << "	40     42     49																																																																																																																																																																																																																																									\n";
-		outfile << "	120    125    121																																																																																																																																																																																																																																									\n";
-		outfile << "	120    116    114																																																																																																																																																																																																																																									\n";
-		outfile << "	45     58     46																																																																																																																																																																																																																																									\n";
-		outfile << "	26     30     24																																																																																																																																																																																																																																									\n";
-		outfile << "	100    105    101																																																																																																																																																																																																																																									\n";
-		outfile << "	117    115    119																																																																																																																																																																																																																																									\n";
-		outfile << "	117    119    122																																																																																																																																																																																																																																									\n";
-		outfile << "	18     13     12																																																																																																																																																																																																																																									\n";
-		outfile << "	18     12     16																																																																																																																																																																																																																																									\n";
-		outfile << "	6      2      5																																																																																																																																																																																																																																										\n";
-		outfile << "	6     10     11																																																																																																																																																																																																																																										\n";
-		outfile << "	72     87     75																																																																																																																																																																																																																																									\n";
-		outfile << "	34     38     33																																																																																																																																																																																																																																									\n";
-		outfile << "	110    114    111																																																																																																																																																																																																																																									\n";
-		outfile << "	58     72     62																																																																																																																																																																																																																																									\n";
-		outfile << "	105    110    106																																																																																																																																																																																																																																									\n";
-		outfile << "	30     34     29																																																																																																																																																																																																																																									\n";
-		outfile << "	22     26     20																																																																																																																																																																																																																																									\n";
-		outfile << "	87    100     90																																																																																																																																																																																																																																									\n";
-		outfile << "	38     45     39																																																																																																																																																																																																																																									\n";
-		outfile << "	10     13     19																																																																																																																																																																																																																																									\n";
-		outfile << "	20     13     22																																																																																																																																																																																																																																									\n";
-		outfile << "	113    109    115																																																																																																																																																																																																																																									\n";
-		outfile << "	116    111    114																																																																																																																																																																																																																																									\n";
-		outfile << "	96     92     89																																																																																																																																																																																																																																									\n";
-		outfile << "	59     52     61																																																																																																																																																																																																																																									\n";
-		outfile << "	65     71     68																																																																																																																																																																																																																																									\n";
-		outfile << "	43     47     53																																																																																																																																																																																																																																									\n";
-		outfile << "	73     67     69																																																																																																																																																																																																																																									\n";
-		outfile << "	91     95     85																																																																																																																																																																																																																																									\n";
-		outfile << "	79     84     80																																																																																																																																																																																																																																									\n";
-		outfile << "	88     82     81																																																																																																																																																																																																																																									\n";
-		outfile << "	48     44     54																																																																																																																																																																																																																																									\n";
-		outfile << "	51     56     57																																																																																																																																																																																																																																									\n";
-		outfile << "	97     98     86																																																																																																																																																																																																																																									\n";
-		outfile << "	52     48     61																																																																																																																																																																																																																																									\n";
-		outfile << "	92     88     81																																																																																																																																																																																																																																									\n";
-		outfile << "	71     79     80																																																																																																																																																																																																																																									\n";
-		outfile << "	47     51     53																																																																																																																																																																																																																																									\n";
-		outfile << "	95     97     85																																																																																																																																																																																																																																									\n";
-		outfile << "	67     59     61																																																																																																																																																																																																																																									\n";
-		outfile << "	84     91     80																																																																																																																																																																																																																																									\n";
-		outfile << "	44     43     53																																																																																																																																																																																																																																									\n";
-		outfile << "	82     73     81																																																																																																																																																																																																																																									\n";
-		outfile << "	98     96     89																																																																																																																																																																																																																																									\n";
-		outfile << "	56     65     68																																																																																																																																																																																																																																									\n";
-		outfile << "	89     92     81																																																																																																																																																																																																																																									\n";
-		outfile << "	54     44     53																																																																																																																																																																																																																																									\n";
-		outfile << "	69     67     61																																																																																																																																																																																																																																									\n";
-		outfile << "	68     71     80																																																																																																																																																																																																																																									\n";
-		outfile << "	86     98     89																																																																																																																																																																																																																																									\n";
-		outfile << "	57     56     68																																																																																																																																																																																																																																									\n";
-		outfile << "	48     54     61																																																																																																																																																																																																																																									\n";
-		outfile << "	73     69     81																																																																																																																																																																																																																																									\n";
-		outfile << "	97     86     85																																																																																																																																																																																																																																									\n";
-		outfile << "	91     85     80																																																																																																																																																																																																																																									\n";
-		outfile << "	51     57     53																																																																																																																																																																																																																																									\n";
-		outfile << "	89     81     76																																																																																																																																																																																																																																									\n";
-		outfile << "	86     89     76																																																																																																																																																																																																																																									\n";
-		outfile << "	85     86     74																																																																																																																																																																																																																																									\n";
-		outfile << "	61     54     63																																																																																																																																																																																																																																									\n";
-		outfile << "	53     57     63																																																																																																																																																																																																																																									\n";
-		outfile << "	69     61     63																																																																																																																																																																																																																																									\n";
-		outfile << "	80     85     74																																																																																																																																																																																																																																									\n";
-		outfile << "	54     53     63																																																																																																																																																																																																																																									\n";
-		outfile << "	57     68     74																																																																																																																																																																																																																																									\n";
-		outfile << "	81     69     76																																																																																																																																																																																																																																									\n";
-		outfile << "	68     80     74																																																																																																																																																																																																																																									\n";
-		outfile << "	74     86     76																																																																																																																																																																																																																																									\n";
-		outfile << "	74     76     63																																																																																																																																																																																																																																									\n";
-		outfile << "	63     76     69																																																																																																																																																																																																																																									\n";
-		outfile << "	74     63     57																																																																																																																																																																																																																																									\n";
-		outfile << "	/ YD / YDE / I2ELJP   21  3  0																																																																																																																																																																																																																																						\n"; 
+		outfile << "/ YD / YDE / MELEM  1910\n";		//Maximum number of finite elements (with fracture the actual number of finite elements increases during the run, however, it should not exceed this number)
+		outfile << "	/ YD / YDE / NELEM   190\n";	//Actual number of finite elements at the beginning of this run.
+		outfile << "	/ YD / YDE / MELST     2\n";	//Maximum number of state variables per finite element.
+		outfile << "	/ YD / YDE / NELST     2\n";	//Actual number of state variables per finite element.
+		outfile << "	/ YD / YDE / MELNO     4\n";	//Maximum number of nodes per finite element.
+		outfile << "	/ YD / YDE / NELNO     3\n";	//Actual number of nodes per finite element.
+		outfile << "	/ YD / YDE / D2ELST    21   190     0\n";//[MELST][MELEM] array containing state variables for all finite elements.
+		outfile << "	/ YD / YDE / I1ELCF   190\n";	//Head of a list of contacting couples for each finite element.
+		outfile << "	- 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1\n";
+		outfile << "	/ YD / YDE / I1ELTY   190\n";	
+		outfile << "	- 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1 - 1\n";
+		outfile << "	/ YD / YDE / I1ELPR   190\n";	//Set of properties associated with each element.
+		outfile << "	1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    1    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0    0\n";
+		outfile << "	/ YD / YDE / I2ELTO    21     3   190\n";	//[MELNO][MELEM] topology array containing nodes for each finite element. Maximum
+		outfile << "	4      9      7		\n";
+		outfile << "	130    129    125	\n";
+		outfile << "	0      1      2		\n";
+		outfile << "	128    127    123	\n";
+		outfile << "	127    126    122	\n";
+		outfile << "	129    128    124	\n";
+		outfile << "	9     14     16		\n";
+		outfile << "	1      4      3		\n";
+		outfile << "	7      9     16		\n";
+		outfile << "	124    128    123	\n";
+		outfile << "	124    123    118	\n";
+		outfile << "	118    123    119	\n";
+		outfile << "	124    118    121	\n";
+		outfile << "	123    127    122	\n";
+		outfile << "	3      4      7		\n";
+		outfile << "	3      7      8		\n";
+		outfile << "	3      8      5		\n";
+		outfile << "	8      7     12		\n";
+		outfile << "	129    124    125	\n";
+		outfile << "	1      3      2		\n";
+		outfile << "	12      7     16	\n";
+		outfile << "	5      8     10		\n";
+		outfile << "	121    118    116	\n";
+		outfile << "	119    123    122	\n";
+		outfile << "	3      5      2		\n";
+		outfile << "	8     12     13		\n";
+		outfile << "	124    121    125	\n";
+		outfile << "	118    119    115	\n";
+		outfile << "	13     18     22	\n";
+		outfile << "	115    117    113	\n";
+		outfile << "	116    118    115	\n";
+		outfile << "	10      8     13	\n";
+		outfile << "	121    116    120	\n";
+		outfile << "	5     10      6		\n";
+		outfile << "	17     11     15	\n";
+		outfile << "	15     11     10	\n";
+		outfile << "	17     15     21	\n";
+		outfile << "	17     21     23	\n";
+		outfile << "	21     15     19	\n";
+		outfile << "	19     15     10	\n";
+		outfile << "	21     19     25	\n";
+		outfile << "	25     19     24	\n";
+		outfile << "	24     19     20	\n";
+		outfile << "	24     20     26	\n";
+		outfile << "	20     19     13	\n";
+		outfile << "	25     24     29	\n";
+		outfile << "	29     24     30	\n";
+		outfile << "	25     29     31	\n";
+		outfile << "	25     31     27	\n";
+		outfile << "	25     27     21	\n";
+		outfile << "	21     27     23	\n";
+		outfile << "	23     27     28	\n";
+		outfile << "	27     31     32	\n";
+		outfile << "	32     31     36	\n";
+		outfile << "	36     31     33	\n";
+		outfile << "	36     33     39	\n";
+		outfile << "	39     33     38	\n";
+		outfile << "	32     36     37	\n";
+		outfile << "	37     36     41	\n";
+		outfile << "	37     41     42	\n";
+		outfile << "	42     41     50	\n";
+		outfile << "	42     50     55	\n";
+		outfile << "	55     50     66	\n";
+		outfile << "	66     50     62	\n";
+		outfile << "	62     50     46	\n";
+		outfile << "	46     50     41	\n";
+		outfile << "	46     41     39	\n";
+		outfile << "	46     39     45	\n";
+		outfile << "	39     41     36	\n";
+		outfile << "	62     46     58	\n";
+		outfile << "	31     29     33	\n";
+		outfile << "	33     29     34	\n";
+		outfile << "	55     66     70	\n";
+		outfile << "	55     70     64	\n";
+		outfile << "	64     70     77	\n";
+		outfile << "	70     66     78	\n";
+		outfile << "	70     78     83	\n";
+		outfile << "	83     78     94	\n";
+		outfile << "	83     94     99	\n";
+		outfile << "	99     94    103	\n";
+		outfile << "	103     94    101	\n";
+		outfile << "	101     94     90	\n";
+		outfile << "	101     90    100	\n";
+		outfile << "	90     94     78	\n";
+		outfile << "	90     78     75	\n";
+		outfile << "	75     78     66	\n";
+		outfile << "	75     66     62	\n";
+		outfile << "	75     62     72	\n";
+		outfile << "	90     75     87	\n";
+		outfile << "	99    103    104	\n";
+		outfile << "	104    103    108	\n";
+		outfile << "	104    108    109	\n";
+		outfile << "	109    108    112	\n";
+		outfile << "	99    104    102	\n";
+		outfile << "	102    104    107	\n";
+		outfile << "	108    103    106	\n";
+		outfile << "	106    103    101	\n";
+		outfile << "	106    101    105	\n";
+		outfile << "	108    106    111	\n";
+		outfile << "	111    106    110	\n";
+		outfile << "	108    111    112	\n";
+		outfile << "	112    111    116	\n";
+		outfile << "	112    116    115	\n";
+		outfile << "	112    115    109	\n";
+		outfile << "	104    109    107	\n";
+		outfile << "	107    109    113	\n";
+		outfile << "	70     83     77	\n";
+		outfile << "	77     83     93	\n";
+		outfile << "	32     37     35	\n";
+		outfile << "	35     37     40	\n";
+		outfile << "	83     99     93	\n";
+		outfile << "	93     99    102	\n";
+		outfile << "	42     55     49	\n";
+		outfile << "	49     55     64	\n";
+		outfile << "	27     32     28	\n";
+		outfile << "	28     32     35	\n";
+		outfile << "	37     42     40	\n";
+		outfile << "	40     42     49	\n";
+		outfile << "	120    125    121	\n";
+		outfile << "	120    116    114	\n";
+		outfile << "	45     58     46	\n";
+		outfile << "	26     30     24	\n";
+		outfile << "	100    105    101	\n";
+		outfile << "	117    115    119	\n";
+		outfile << "	117    119    122	\n";
+		outfile << "	18     13     12	\n";
+		outfile << "	18     12     16	\n";
+		outfile << "	6      2      5		\n";
+		outfile << "	6     10     11		\n";
+		outfile << "	72     87     75	\n";
+		outfile << "	34     38     33	\n";
+		outfile << "	110    114    111	\n";
+		outfile << "	58     72     62	\n";
+		outfile << "	105    110    106	\n";
+		outfile << "	30     34     29	\n";
+		outfile << "	22     26     20	\n";
+		outfile << "	87    100     90	\n";
+		outfile << "	38     45     39	\n";
+		outfile << "	10     13     19	\n";
+		outfile << "	20     13     22	\n";
+		outfile << "	113    109    115	\n";
+		outfile << "	116    111    114	\n";
+		outfile << "	96     92     89	\n";
+		outfile << "	59     52     61	\n";
+		outfile << "	65     71     68	\n";
+		outfile << "	43     47     53	\n";
+		outfile << "	73     67     69	\n";
+		outfile << "	91     95     85	\n";
+		outfile << "	79     84     80	\n";
+		outfile << "	88     82     81	\n";
+		outfile << "	48     44     54	\n";
+		outfile << "	51     56     57	\n";
+		outfile << "	97     98     86	\n";
+		outfile << "	52     48     61	\n";
+		outfile << "	92     88     81	\n";
+		outfile << "	71     79     80	\n";
+		outfile << "	47     51     53	\n";
+		outfile << "	95     97     85	\n";
+		outfile << "	67     59     61	\n";
+		outfile << "	84     91     80	\n";
+		outfile << "	44     43     53	\n";
+		outfile << "	82     73     81	\n";
+		outfile << "	98     96     89	\n";
+		outfile << "	56     65     68	\n";
+		outfile << "	89     92     81	\n";
+		outfile << "	54     44     53	\n";
+		outfile << "	69     67     61	\n";
+		outfile << "	68     71     80	\n";
+		outfile << "	86     98     89	\n";
+		outfile << "	57     56     68	\n";
+		outfile << "	48     54     61	\n";
+		outfile << "	73     69     81	\n";
+		outfile << "	97     86     85	\n";
+		outfile << "	91     85     80	\n";
+		outfile << "	51     57     53	\n";
+		outfile << "	89     81     76	\n";
+		outfile << "	86     89     76	\n";
+		outfile << "	85     86     74	\n";
+		outfile << "	61     54     63	\n";
+		outfile << "	53     57     63	\n";
+		outfile << "	69     61     63	\n";
+		outfile << "	80     85     74	\n";
+		outfile << "	54     53     63	\n";
+		outfile << "	57     68     74	\n";
+		outfile << "	81     69     76	\n";
+		outfile << "	68     80     74	\n";
+		outfile << "	74     86     76	\n";
+		outfile << "	74     76     63	\n";
+		outfile << "	63     76     69	\n";
+		outfile << "	74     63     57	\n";
+		outfile << "	/ YD / YDE / I2ELJP   21  3  0\n"; 
 		outfile.close();
 	}
 	else
@@ -671,18 +675,15 @@ void Outfile::writeelements(UserVariables User, ProblemVariables Problem, BonusV
 	outfile.open(User.getfile(), std::ios::out | std::ios::app | std::ios::binary); ;
 	if (outfile.is_open())
 	{
-		outfile << "/*   Control     */							  \n";
-		outfile << "												  \n";
-		outfile << "												  \n";
-		outfile << "	/*   Interactions     */					  \n";
-		outfile << "	/ YD / YDI / MICOUP           10000000		  \n";
-		outfile << "	/ YD / YDI / NICOUP     0					  \n";
-		outfile << "	/ YD / YDI / IIECFF - 2						  \n";
-		outfile << "	/ YD / YDI / DIEDI + 2e+002					  \n";
-		outfile << "	/ YD / YDI / DIEZON + 2.76000000000e-002	  \n";
-		outfile << "	/ YD / YDI / D1IESL     0					  \n";
-		outfile << "	/ YD / YDI / I1IECN     0					  \n";
-		outfile << "	/ YD / YDI / I1IECT     0					  \n";
+		outfile << "\t/*   Interactions     */											    \n";
+		outfile << "\t/ YD / YDI / MICOUP           " << Problem.getmaxcontcouples()	<< "\n"; //Maximum number of contacting couples of finite elements.
+		outfile << "\t/ YD / YDI / NICOUP			" << Problem.getcontcouples()		<<	"\n";//Actual number of contacting couples of finite elements (always set to zero)
+		outfile << "\t/ YD / YDI / IIECFF - 2						  \n";
+		outfile << "\t/ YD / YDI / DIEDI + 2e+002					  \n";
+		outfile << "\t/ YD / YDI / DIEZON + 2.76000000000e-002	  \n";
+		outfile << "\t/ YD / YDI / D1IESL     0					  \n";
+		outfile << "\t/ YD / YDI / I1IECN     0					  \n";
+		outfile << "\t/ YD / YDI / I1IECT     0					  \n";
 	}
 	else
 	{
@@ -1377,7 +1378,7 @@ int main(int argc, char **argv)
 	//arugments from the cmd line: argv[0]=./Ygen, argv[1]=...
 	std::vector <std::string> userdata, problemdata, bonusdata, steeldata, pvbdata, glasdata, rockdata;
 
-	std::string steel,pvb, glas, rock;
+	std::string steel, pvb, glas, rock;
 
 	Inputfile infile;
 

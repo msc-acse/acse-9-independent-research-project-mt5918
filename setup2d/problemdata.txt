@@ -1,36 +1,32 @@
 #maximum number of time steps
-1.00E+06
 #gravity
--9.8
-#time step dt
-1.00E-05
 #output frequency
-1.00E+04
 #restart save frequency
-1.00E+06
 #gravity settling stage
-0
 #load ramping stage
-0
 #maximum dimension
-10
 #maximum force
-1.00E+06
 #maximum velocity
-100
 #maximum stress
-1.00E+08
 #maximum displacement
-2
 #maximum joint aperture
-1.00E-07
 #maximum contacting couples
-10000000
-#buffer size for NBS
-2.76E-02
 #accuracy
-32bit
 #joint friction model
-coulomb
 #initial aperture correlation
+1.00E+06
+-9.8
+1.00E+04
+1.00E+06
+0
+0
+10
+1.00E+06
+100
+1.00E+08
+2
+1.00E-07
+10000000
+32bit
+coulomb
 roughness

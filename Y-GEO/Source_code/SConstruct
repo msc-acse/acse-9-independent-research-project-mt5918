@@ -1,0 +1,51 @@
+# Set options
+AddOption("--enable-icc", help="Enable compilation with Intel's Compiler", action="store_true", dest="enable_icc")
+
+# Extract variables from the command line
+enable_icc = GetOption("enable_icc")
+
+# Setup an environment for building release multicore objects
+if enable_icc:
+    release_env = Environment(tools=["icl", "gnulink"])
+    release_env["STATIC_AND_SHARED_OBJECTS_ARE_THE_SAME"]=1
+    release_env.Append(CPPFLAGS = ["-strict-ansi", "-fp-model precise", "-Wcheck", "-w 4", "-g", "-O0"] )
+
+    debug_env = Environment(tools=["icl", "gnulink"])
+    debug_env["STATIC_AND_SHARED_OBJECTS_ARE_THE_SAME"]=1
+    debug_env.Append(CPPFLAGS = ["-g", "-O0"])
+
+
+else:
+    release_env = Environment()
+    debug_env = Environment()
+
+    release_env.Append(CPPFLAGS = ["-pedantic", "-Wall", "-Wextra", "-O3", "-ftree-vectorizer-verbose=2", "-g"])
+    debug_env.Append(CPPFLAGS = ["-pedantic", "-Wall", "-Wextra", "-g", "-O0"])
+
+    # Checked STL implementation for gcc only
+    # TODO: Check this is gcc
+    debug_env.Append(CPPDEFINES = ["_GLIBCXX_DEBUG"])
+
+
+# Configure include directories
+debug_env.Append(CPPPATH = ["#/include"])
+release_env.Append(CPPPATH = ["#/include"])
+
+
+# Configure build directories
+release_env.VariantDir('build/release', 'src', duplicate=0)
+debug_env.VariantDir('build/debug', 'src', duplicate=0)
+
+release_env.Append(LIBS = ["m"])
+debug_env.Append(LIBS = ["m"])
+
+
+release_env.Append(CPPPATH = ["include"])
+debug_env.Append(CPPPATH = ["include"])
+
+
+# Build FEMDEM 
+release_env.Program("build/femdem",     [Glob("build/release/*.c")]);
+debug_env.Program("build/femdem-debug", [Glob("build/debug/*.c")]);
+
+

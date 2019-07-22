@@ -1,0 +1,36 @@
+#density
+#YoungsModulus
+#Poisson Ratio
+#Massdamping coefficient
+#Elastic Penalty factor
+#Contact penalty factor
+#mode 1 energy rate
+#mode 2 energy rate
+#tensile strength
+#internal friction
+#internal cohesion
+#fluid pressure
+#joint friction
+#jrc0
+#jcs0
+#joint sample size
+#interface friction
+#problems2d
+1100
+1.00E+08
+0.495
+0
+1.00E+09
+1.00E+09
+20
+2800
+2.00E+07
+0.7
+2.00E+07
+0
+0.3
+15
+120
+0.2
+0.62
+plane strain

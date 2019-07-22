@@ -62,6 +62,9 @@
 \usepackage[english]{babel}
 \usepackage{amsmath}
 \usepackage{bm}
+\usepackage{mathtools}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
 \usepackage{graphicx}
 \usepackage[colorinlistoftodos]{todonotes}
 \usepackage{epstopdf} % automatically replace .eps with .pdf in graphics
@@ -75,14 +78,17 @@
 \usepackage{booktabs}
 \usepackage{tcolorbox}
 \usepackage{silence}
+\usepackage{multicol}
 %\usepackage{natbib}
 \usepackage{multirow}
 \usepackage{pbox, cellspace}
 \cellspacetoplimit = 6pt
 \cellspacebottomlimit = 12pt
 
-\usepackage[style=ACM-Reference-Format,backend=biber,backref=true,hyperref=true,giveninits=true,maxbibnames=999,sorting=none,citestyle=numeric]{biblatex} 
+\usepackage[style=ACM-Reference-Format,backend=biber,backref=true,hyperref=true,giveninits=true,maxbibnames=999,sorting=none,citestyle=numeric,sortcites]{biblatex} 
 \WarningFilter{biblatex}{Patching footnotes failed}
+
+
 
 %% The majority of ACM publications use numbered citations and
 %% references.  The command \citestyle{authoryear} switches to the
@@ -110,7 +116,8 @@
   filecolor=blue, 
   linkcolor=blue, 
   urlcolor=blue,
-  hypertexnames=true}
+  hypertexnames=true,
+  breaklinks=true}
 
 %%
 %% The "title" command has an optional parameter,
@@ -332,20 +339,20 @@ where $C_{\rm{10}}$ and $C_{\rm{01}}$ are adjustable parameters, $d=2\,/\,K$ wit
 \bigbreak
 Other hyper-elastic models \cite{Aba13} include a more general polynomial model, \texttt{Arruda-Boyce}, \texttt{Ogden} and \texttt{Yeoh}. For the polynomial model, customized coefficients \cite{Sam19} already exist in the literature, specifically for laminated glass.
 
+\bigbreak
+Modelling the occurence of fracture needs to be permitted for the inter-layer as well, as fracturing of the inter-layer is possible. This consideration necessitates the extension of the smeared single and combined fracture model to the inter-layer.
+
 \section{Numerical Modelling Theory}
 \label{sec:NumericsTheory}
 
-\subsection{FEMDEM}
-
-\subsection{General}
-The combined finite-discrete element method  contains bodies is represented
-by a discrete element that interacts with neighbouring discrete elements . In addition, each discrete element is discretised into finite elements. Each discrete element has its own finite element mesh. Each finite element mesh employed captures the deformability of a discrete element. Each discrete element is discretised into finite elements. Fracture and fragmentation processes are in essence processes of transition from continua to discontinua. It is also in principle possible to imagine an inverse process of particles merging together.\cite{Mun04}
+\subsection{FEMDEM Model}
+The combined finite-discrete element method, \texttt{FEMDEM} or \texttt{FDEM}, contains bodies is represented by a discrete element that interacts with neighbouring discrete elements . In addition, each discrete element is discretised into finite elements. Each discrete element has its own finite element mesh. Each finite element mesh employed captures the deformability of a discrete element. Each discrete element is discretised into finite elements. Fracture and fragmentation processes are in essence processes of transition from continua to discontinua. It is also in principle possible to imagine an inverse process of particles merging together.\cite{Mun04}
 
 \bigbreak
-The combined discrete finite element method \texttt{FEMDEM} \cite{Wan18, Mun95, Mun99, Mun04, Mun12, Mun13, Guo16, Gao14, Xu14, Che18} is able to realistically model the detection, interaction, deformation and fracturing of matrix bodies. These bodies are modelled as a discrete element, which consists of a cluster of finite elements. Fracturing results in the formation of new discrete elements \cite{Mun13}.
+The combined discrete finite element method \texttt{FEMDEM} \cite{Wan18, Mun95, Mun99, Mun04, Mun12, Mun13, Guo16, Gao14, Xu14, Che18} is able to model the detection, interaction, deformation and fracturing of matrix bodies. These bodies are modelled as discrete elements, each consisting of a cluster of finite elements. Fracturing results in the formation of new discrete elements \cite{Mun13}.
 
 \bigbreak
-Based on previous works by Munjiza et al \cite{Mun95, Mun99, Mun04}, Xiang et al \cite{Xia09} developed the \texttt{3D} \texttt{FEMDEM} code \texttt{Y3D} created the model \texttt{Solidity}. This model is capable of created realistic coupled multi-physics simulations. In contrast to conventional models, Solidity is not reliant element deformability restriction constraints (locking) and uses simpler triangular, quadratic and tetrahedral elements \cite{Lat15}. 
+Based on the \texttt{3D} \texttt{FDEM} code \texttt{Y3D} by Munjiza et al \cite{Mun95, Mun99, Mun04}, Xiang et al \cite{Xia09} added many detailed improvements and features to the code. The new model, \texttt{Solidity}, is capable of creating realistic coupled multi-physics simulations. In contrast to conventional models, Solidity is not reliant on element deformability restriction constraints (due to the locking problem) and uses simpler triangular, quadratic and tetrahedral elements \cite{Lat15}. 
 
 \subsection{Governing Equations}
 
@@ -363,6 +370,16 @@ The combination of discrete and finite elements is established via an interactio
 
 \bigbreak
 Contact detection is aimed at detecting couples of discrete elements close to each other, i.e. eliminating couples of discrete elements that are far from each other and cannot possibly be in contact. In other words, contact detection is aimed at avoiding processing contact interaction when there is no contact. In that sense, contact detection is aimed at reducing \texttt{CPU} requirements, i.e. reducing processing (run) times. \cite{Mun04}
+
+\bigbreak
+Contact interaction is only considered for discrete elements which are within a buffer size $b$ of each other, given by
+
+\begin{equation}
+    \label{eq:buff}
+    b = 0.1\,\Delta_{\rm{min}}\,,
+\end{equation}
+
+where $\Delta_{\rm{min}}$ is the minimum edge\footnote{minimum element side length, minimum size}.
 
 \subsection{Contact Interaction}
 
@@ -397,7 +414,7 @@ with applied pressure $\sigma$, element height $h$ and penalty factor $p$. The p
     p=\alpha\,E\,,
 \end{equation}
 
-with \rm{Young's Modulus} $E$ and an arbitrary constant $\alpha$ (e.g. $\alpha=5$) to regulate penetration. Contact damping (Rayleigh damping, viscous damping) due to plastic deformation, breakage of surface asperities, etc. is given by \cite{Mun04}
+with \rm{Young's Modulus} $E$ and a constant $\alpha$ (in this paper: $\alpha=10$) to regulate penetration. Contact damping (Rayleigh damping, viscous damping) due to plastic deformation, breakage of surface asperities, etc. is given by \cite{Mun04}
 
 \begin{equation}
     \label{eq:sigmac}
@@ -410,8 +427,6 @@ with damping ratio $0\leq\xi\footnotemark\leq1$ and finite element density $\rho
 
 \footnotetext{describes energy dissipation}
 
-\subsection{Joint Constitutive Model}
-
 \section{Numerical Model Approach}
 \label{sec:NumericalModelApproach}
 
@@ -421,13 +436,13 @@ with damping ratio $0\leq\xi\footnotemark\leq1$ and finite element density $\rho
 A \texttt{2D} input \texttt{Y} file is generated using the pre-processor \texttt{GID} \cite{GID11}. The geometry could also be imported from common \texttt{CAD} software such as \texttt{AutoCAD}.
 
 \bigbreak
-The input file is compiled using three binary files \texttt{Yf}, \texttt{m2vtk} and \texttt{m2vtk\_crack}, which constitute the \texttt{Y2D} code. The program may be obtained from the \texttt{AMCG} at Imperial College. The high performance computing (\texttt{HPC}) system at Imperial College London is applied to generate time series texttt{.vtu} files for the simulation. 
+The input file is compiled using three binary files \texttt{Yf}, \texttt{m2vtk} and \texttt{m2vtk\_crack}, which constitute the \texttt{Y2D} code. The program may be obtained from the \texttt{AMCG} at Imperial College. The high performance computing (\texttt{HPC}) system at Imperial College London is applied to generate time series \texttt{.vtu} files for the simulation. 
 
 \bigbreak
 The series is analysed using the post-processing software \texttt{Hyperview} \cite{Hyp17}. For the \texttt{3D} simulation setup, which is is not considered for now, a similar approach will be applied.
 
-\subsection{Model Setup}
-\label{subsec:ModelSetup}
+\subsection{Geometry Setup}
+\label{subsec:GeometrySetup}
 
 The input file contains the model including the geometry, constraints, materials, as well as the simulation parameters. The majority of modelling parameters are adduced from the literature. A provisional list of material parameters is given in appendix table \ref{tab:matpar}. A provisional list of input file simulation parameters is provided in appendix table \ref{tab:simpar}.
 
@@ -441,7 +456,7 @@ The input file contains the model including the geometry, constraints, materials
 Fig. \ref{fig:geometry} illustrates the preliminary \texttt{2D} geometric setup. The figure shows the initial state of the spherical projectile (yellow) immediately before impact on the laminated glass (impactor glass plies in red, inner glass ply in blue, inter-layer in green). The glass is fixed via a support system (brown). The support structure is not modelled for now and is replaced with no-velocity boundary conditions acting on the sides of the glass plies. 
 
 \bigbreak
-In real-world applications, the dimensions of the inter-layer are smaller compared to the glass plies. Therefore, a translational degree of freedom in \texttt{y}-direction exists for the inter-layer. This effect will also need to be considered in this paper.
+In real-world applications, the dimensions of the inter-layer are smaller compared to the glass plies. Therefore, a translational degree of freedom in the \texttt{y}-direction exists for the inter-layer. This effect will also need to be considered in this paper.
 
 \bigbreak
 Critical flaws, which cause complete structural failure, are usually found on the cut and machined glass edges \cite{Pel16}. Based on this consideration, the boundary structure layout requires special care. A project task remains to determine a realistic boundary structure to be applied.
@@ -455,25 +470,205 @@ The dimensions of the glass plate is set to $2000\,{\rm{mm}}\times2000\,{\rm{mm}
 \bigbreak
 The preliminary mesh for all bodies consists of triangular elements. For the \texttt{3D} model, tetrahedral elements \cite{Che18} are to be considered. The preliminary element size is $1\,{\rm{mm}}$. Necessary modifications include reducing the number of elements for the projectile, as it is not of interest for the analysis and increasing the element size for far-field mesh elements for the plies and inter-layer. Potentially, differently shaped elements are more optimal for the results. The glass and inter-layers need to consist of several element layers to enable a more precise analysis. 
 
+\subsection{Material Parameters}
+\label{subsec:MaterialParameters}
+
+Table \ref{tab:matpar} lists the material parameters for glass, \texttt{PVB}, steel and rock. The literature provides values for most of the quantities, although they are extremely diverse in some cases. The values used in this paper are marked bold. The elastic and contact penalties are evaluated using Eq. \ref{eq:p}.
+
+\begin{table*}
+  \setlength{\tabcolsep}{2pt}
+  \small
+  %\flushleft
+  \caption{List of Y2 input material parameter values.}
+  \begin{tabular}{@{}lllll@{}}
+    Property & Glass & PVB & Steel Projectile & Rock\tablefootnote{for reference}  \\\midrule
+    
+    Density $\rho\,\left[{\rm{kg}} / {\rm{m}}^3\right]$
+    
+                &$2500$ \cite{Xu10, Aba13, Che18, Ved17, Gao14}  
+                
+                &\begin{tabular}[t]{@{}l@{}}
+                    $870$ \cite{Gao14} \\ 
+                    $\bm{1100}$ \cite{Xu10, Che18, Ved17} \\
+                    $1105{\rm{e}}3$ \cite{Che18}\\
+                \end{tabular}
+                
+                & $7800$ \cite{Che18} & $2700$\\[1em]
+
+    Young's Modulus $E\,\left[{\rm{Pa}}\right]$
+    
+                & \begin{tabular}[t]{@{}l@{}}
+                    $\bm{7{\rm{e}}10}$ \cite{Xu10, Che18, Ved17}\\
+                    $7.409{\rm{e}}10$ \cite{Gao14}\\
+                    $7.41{\rm{e}}10$ \cite{Che18}\\
+                    $7.5{\rm{e}}10$ \cite{Aba13}\\
+                \end{tabular}
+                
+                & \begin{tabular}[t]{@{}l@{}}
+                    $\bm{1{\rm{e}}8}$ \cite{Che18} \\
+                    $2.2{\rm{e}}2$ \cite{Ved17}\\
+                    $5{\rm{e}}10$ \cite{Gao14}\\
+                \end{tabular}
+                
+                & $2{\rm{e}}11$ \cite{Che18} & $3{\rm{e}}10$ \\[1em]
+                
+    Poisson's Ratio $\nu$ & \begin{tabular}[t]{@{}l@{}}
+                                $0.2$ \cite{Che18, Gao14} \\
+                                $0.21$ \cite{Aba13} \\
+                                $0.3$ \cite{Che18} \\
+                                $0.22$ \cite{Xu10} \\
+                                $\bm{0.23}$ \cite{Ved17}\\
+                                $0.25$ \cite{Che18}
+                            \end{tabular}
+                          
+                          & \begin{tabular}[t]{@{}l@{}}
+                                $0.42$ \cite{Che18} \\
+                                $0.45$ \cite{Aba13} \\
+                                $0.48$ \cite{Gao14} \\
+                                $0.49$ \cite{Che15} \\
+                                $\bm{0.495}$ \cite{Ved17}
+                            \end{tabular}
+                          
+                          & $0.29$ \cite{Che18} & $0.205$\\[1em]
+                          
+    Mass damping coefficient $\mu$\tablefootnote{Rayleigh damping, viscous damping} & $0$ & $0$ & $0$ & $0$ \\[1em]
+    
+    Elastic penalty term (see Eq. \ref{eq:p}) & $7{\rm{e}}11$ & $1{\rm{e}}9$ & $2.0{\rm{e}}12$  & $3.0{\rm{e}}11$\\[1em]
+    
+    Contact penalty (see Eq. \ref{eq:p}) & $7{\rm{e}}11$ & $1{\rm{e}}9$ & $2.0{\rm{e}}12$  & $3.0{\rm{e}}11$\\[1em]
+
+    Mode I energy rate $G_{\rm{I}}\,\left[{\rm{J}}/{\rm{m}}^2\right]$ & 
+    
+    \begin{tabular}[t]{@{}l@{}}
+            $\bm{10}$ \cite{Xu10}\\
+            $3.9$ \cite{Che18} \\
+            $4.0$ \cite{Che18}
+        \end{tabular}
+        
+    & \begin{tabular}[t]{@{}l@{}}
+            $2.8{\rm{e}}3$ \cite{Hoo17} \\
+            $\bm{20}$ \cite{Che18}
+        \end{tabular}  
+    
+    & $1.9{\rm{e}}5$ \cite{Sta00} & $20.0$\\[1em]
+
+    Mode II energy rate $G_{\rm{II}}\,\left[{\rm{J}}/{\rm{m}}^2\right]$ & $50$ \cite{Xu10} & $2.8{\rm{e}}3$ & $1.9{\rm{e}}5$ & $100.0$ \\[1em]
+    
+    Mode III energy rate $G_{\rm{III}}\,\left[{\rm{J}}/{\rm{m}}^2\right]$ & $50$ \cite{Xu10} & $2.8{\rm{e}}3$ & $1.9{\rm{e}}5$ & $100.0$ \\[1em]
+    
+    Tensile Strength $\sigma\,\left[{\rm{Pa}}\right]$ & \begin{tabular}[t]{@{}l@{}}
+            $6{\rm{e}}7$ \cite{Che15}\\
+            $3{\rm{e}}7$ \cite{Che18}\\
+            $\bm{3.46{\rm{e}}7}$ \cite{Che18}\\
+        \end{tabular}
+        
+        & \begin{tabular}[t]{@{}l@{}}
+            $\bm{2{\rm{e}}7}$ \cite{Zan12}\\
+            $1.862{\rm{e}}7$ \cite{Che18}\\
+        \end{tabular}
+        
+        & $1{\rm{e}}7$ \cite{Wu14} & $4{\rm{e}}6$\\[1em]
+        
+    Shear Strength $\tau\,\left[{\rm{Pa}}\right]$ & $17.9$ \cite{Che18} & $17.9$ \cite{Che18} & & \\[1em]
+    
+    Internal friction coefficient $\eta$ (Eq. \ref{eq:intfriccoeff}) & $0.1$ \cite{Che15}  & $0.7$ \cite{Kun15} & $0.15$ \cite{Sah07} & $0.6$ \\[1em]
+    
+    Internal cohesion $c\,\left[{\rm{Pa}}\right]$ (Eq. \ref{eq:MohrCoulomb}) & $7{\rm{e}}10$ & $2.2{\rm{e}}2$ & $2{\rm{e}}11$ & $8{\rm{e}}6$ \\[1em]
+    
+    Pore fluid pressure\tablefootnote{\label{notrel}not relevant for glass, \texttt{PVB} and steel} $\left[{\rm{Pa}}\right]$ & $0$ & $0$ & $0$ & $0$ \\
+    
+    Joint friction coefficient\textsuperscript{\ref{notrel}} & $0.6$ & $0.6$ & $0.6$ & $0.6$ \\
+    
+    Joint roughness coefficient $\texttt{JRC}_{\rm{0}}$ \textsuperscript{\ref{notrel}, }\tablefootnote{\label{jrc}at laboratory conditions} & $15$ & $15$ & $15$ & $15$ \\
+    
+    Joint compressive strength $\texttt{JCS}_{\rm{0}}$\textsuperscript{\ref{notrel}, \ref{jrc}} $\left[{\rm{MPa}}\right]$ & $120$ & $120$ & $120$ & $120$ \\
+    
+    Joint sample size $\left[{\rm{m}}\right]$\textsuperscript{\ref{notrel}} & $0.2$ & $0.2$ & $0.2$ & $0.2$\\[1em]
+    
+    Interface friction & $0.1$ \cite{Che15} & $0.62$ \cite{Fah07} & $0.44$ \cite{Fah07} & $0.6$ \\
+    
+    2D Problems & plane strain & & \\\bottomrule
+  \end{tabular}
+  \label{tab:matpar}
+\end{table*}
+
+\subsection{Problem Parameters}
+\label{subsec:ProblemParameters}
+
+\begin{table}[t]
+  \caption{List of Y2D input simulation parameter values.}
+  \begin{tabularx}{\columnwidth}{ll}
+    Parameter                               & Value                     \\\midrule
+    Maximum number of timesteps $n_{\rm{t}}$ (Eq. \ref{eq:nt})& $2{\rm{e}}6$         \\
+    Current number of timesteps             & $0$                       \\
+    Restart file saving frequency           & $1{\rm{e}}2$              \\
+    Gravity in \texttt{X} Direction (m/s2)  & $0$                       \\
+    Gravity in \texttt{Y} Direction (m/s2)  & $0$                       \\
+    Gravity in \texttt{Z} Direction (m/s2)  & $-9.8$                    \\
+    Timestep (s) (Eq. \ref{eq:deltat})      & $1{\rm{e}}-6$             \\
+    Output frequency                        & $2{\rm{e}}3$              \\
+    Current number of iterations            & $0$                       \\
+    Gravity setting stage (s)               & $0$                       \\
+    Load ramping stage (s)                  & $0$                       \\
+    Maximum dimension (m)                   & $10$                      \\
+    Maximum force (N)                       & $1{\rm{e}}6$              \\
+    Maximum velocity (m/s)                  & $100$                     \\
+    Maximum stress (Pa)                     & $1{\rm{e}}8$              \\
+    Maximum displacement (m)                & $0.1$                     \\
+    Minimum joint aperture (m)              & $1{\rm{e}}-7$             \\
+    Maximum contacting couples              & $1{\rm{e}}7$              \\
+    Buffer Size $b$ for NBS (m) (Eq. \ref{eq:buff})& $7.60{\rm{e}}-5$       \\
+    Accuracy (bit)                          & $32$                      \\
+    Joint friction model                    & {\small Coulomb}          \\
+    Initial aperture correlation            & {\small roughness}        \\\bottomrule
+  \end{tabularx}
+  \label{tab:simpar}
+\end{table}
+
+\begin{table}[t]
+  \caption{List of auxiliary parameter values (to calculate simulation parameter values).}
+  \begin{tabularx}{\columnwidth}{ll}
+    Parameter                               & Value                     \\\midrule
+    Total minimum element volume $V_{\rm{e}}$ ($m^3$)& $1.00{\rm{e}}-07$\\
+    Total minimum edge $\Delta_{\rm{min}}$ (m)& $4.13{\rm{e}}-04$       \\
+    Total real simulation time $t$ (s)        & $10$                    \\
+    Critical time step glass (s) (Eq. \ref{eq:deltatcrit})& $2{\rm{e}}6$\\
+    Critical time step steel (s) (Eq. \ref{eq:deltatcrit})&$2{\rm{e}}6$ \\
+    Critical time step \texttt{PVB} (s) (Eq. \ref{eq:deltatcrit})&$2{\rm{e}}6$   \\
+    Overall Mesh size (m)                   & $2.5{\rm{e}}-4$           \\
+    Mesh size projectile (m)                & $2.5{\rm{e}}-4$           \\
+    Mesh size plies (m)                     & $2.5{\rm{e}}-4$           \\
+    Mesh size inter-layer (m)               & $2.5{\rm{e}}-4$           \\\bottomrule
+  \end{tabularx}
+  \label{tab:simpar}
+\end{table}
+
 \bigbreak
-The radius of the steel sphere (or circle) is set to $2.5\,{\rm{mm}}$. The time step \cite{Far19}\footnote{\label{DEMPlus} for inquiries concerning this reference please contact the \texttt{AMCG} at Imperial College London} is set accordingly to
+The radius of the steel sphere (or circle) is set to $2.5\,{\rm{mm}}$. The critical time step \cite{Far19}\footnote{\label{DEMPlus} for inquiries concerning this reference please contact the \texttt{AMCG} at Imperial College London} is set accordingly to
 
 \begin{equation}
-\label{eq:deltat}
-\Delta t=\sqrt{\frac{l\footnotemark\,\rho\footnotemark}{p}}=\sqrt{\frac{0.000413\cdot7.8\cdot10^3}{4\cdot{10}^{11}}}{\rm{s}}\approx3\rm{e}-6{\rm{s}}
+\label{eq:deltatcrit}
+\Delta t_{\rm{crit}}=\sqrt{\frac{V_{\rm{e}}\footnotemark\,\rho\footnotemark}{p}}=\sqrt{\frac{0.000413\cdot7.8\cdot10^3}{4\cdot{10}^{11}}}{\rm{s}}\,.
 \end{equation}
 
 \addtocounter{footnote}{-2}
 \stepcounter{footnote}
-\footnotetext{volume  $\left({\rm{in}}\,{\rm{m}}^3\right)$ of the smallest finite element, without units; often the minimum element side length (minimum edge or size) is used instead.}
+\footnotetext{volume  $\left({\rm{in}}\,{\rm{m}}^3\right)$ of the smallest finite element, without units}
 \stepcounter{footnote}
 \footnotetext{density $\left({\rm{in}}\,{\rm{kg}}/{\rm{m}}^3\right)$ of the material of the smallest finite element, without units}
 
-To simulate real time $t=3\,{\rm{s}}$, the maximum number of time steps required \cite{Far19}\textsuperscript{\ref{DEMPlus}} is given by
+The acceptable time step $\Delta t$ is given by
+
+\begin{equation}
+    \label{eq:deltat}
+    \Delta t= \floor{\Delta t_{\rm{crit}}} = 3\rm{e}-6{\rm{s}}\,,
+\end{equation},
+
+where $\floor{\,}$ denotes the floor operator. To simulate real time $t=10\,{\rm{s}}$, the maximum number of time steps required \cite{Far19}\textsuperscript{\ref{DEMPlus}} is given by
 
 \begin{equation}
     \label{eq:nt}
-    n_{\rm{t}}=\frac{t}{\Delta t}=\frac{3\,{\rm{s}}}{3\,{\rm{e}}-6\,{\rm{s}}}=1{\rm{e}}6
+    n_{\rm{t}}=\frac{t}{\Delta t}=\frac{10\,{\rm{s}}}{3\,{\rm{e}}-6\,{\rm{s}}}=1{\rm{e}}6\,.
 \end{equation}
 
 \subsection{Verification}
@@ -504,180 +699,18 @@ Liu et al \cite{Liu16} numerically investigated the optimisability of the inter-
 The results show...
 
 \begin{acks}
-Gratitude to the \texttt{AMCG} group for supporting this project and to course director Dr Gerard Gorman\footnote{g.gorman@imperial.ac.uk, Imperial College London, Department of Earth and Science} for enabling this research.
+The authors would like to thank the \texttt{AMCG} for supporting this project and the course director Dr Gerard Gorman\footnote{g.gorman@imperial.ac.uk, Imperial College London, Department of Earth and Science} for enabling this research.
 \end{acks}
 
 \medskip
 \printbibliography
 
-\appendix
-\setcounter{table}{0}
-\renewcommand{\thetable}{\Alph{table}}
-
-\begin{table}[!h]
-  \caption{List of Y2D input simulation parameter values.}
-  \begin{tabular*}{\columnwidth}{lr}
-    Parameter                               & Value                     \\\midrule
-    Mesh size                               & $2.5{\rm{e}}-4$           \\
-    Maximum number of timesteps (see Eq. \ref{eq:nt})& $2{\rm{e}}6$     \\
-    Current number of timesteps             & $0$                       \\
-    Restart file saving frequency           & $1{\rm{e}}2$              \\
-    Gravity in \texttt{X} Direction (m/s2)  & $0$                       \\
-    Gravity in \texttt{Y} Direction (m/s2)  & $0$                       \\
-    Gravity in \texttt{Z} Direction (m/s2)  & $-9.8$                    \\
-    Timestep (s) (see Eq. \ref{eq:deltat})  & $1{\rm{e}}-6$             \\
-    Output frequency                        & $2{\rm{e}}3$              \\
-    Current number of iterations            & $0$                       \\
-    Gravity setting stage (s)               & $0$                       \\
-    Load ramping stage (s)                  & $0$                       \\
-    Maximum dimension (m)                   & $10$                      \\
-    Maximum force (N)                       & $1{\rm{e}}6$              \\
-    Maximum velocity (m/s)                  & $100$                     \\
-    Maximum stress (Pa)                     & $1{\rm{e}}8$              \\
-    Maximum displacement (m)                & $0.1$                     \\
-    Minimum joint aperture (m)              & $1{\rm{e}}-7$             \\
-    Maximum contacting couples              & $1{\rm{e}}7$              \\
-    Accuracy (bit)                          & $32$                      \\
-    Joint friction model                    & Coulomb                   \\
-    Initial aperture correlation            & roughness                 \\\bottomrule
-  \end{tabular*}
-  \label{tab:simpar}
-\end{table}
+%\appendix
+%\setcounter{table}{0}
+%\renewcommand{\thetable}{\Alph{table}}
 
 %\section{Material Parameters}
 %\label{sec:MaterialParameters}
-
-\onecolumn
-\begin{table}[!h]
-  \flushleft
-  \caption{List of Y2 input material parameter values.}
-  \small
-  \begin{tabular*}{\columnwidth}{llllr}
-    Property & Glass & PVB & Steel Projectile & Rock\tablefootnote{for reference}  \\\midrule
-    
-    Density $\rho\,\left[{\rm{kg}} / {\rm{m}}^3\right]$
-    
-                &$2500$ \cite{Xu10, Aba13, Che18, Ved17, Gao14}  
-                
-                &\begin{tabular}[t]{@{}l@{}}
-                    $870$ \cite{Gao14} \\ 
-                    $1100$ \cite{Xu10, Che18, Ved17} \\
-                    $1105{\rm{e}}3$ \cite{Che18}\\
-                \end{tabular}
-                
-                & $7800$ \cite{Che18} & $2700$\\[1em]
-
-    Young's Modulus $E\,\left[{\rm{Pa}}\right]$
-    
-                & \begin{tabular}[t]{@{}l@{}}
-                    $7{\rm{e}}10$ \cite{Xu10, Che18, Ved17}\\
-                    $7.409{\rm{e}}10$ \cite{Gao14}\\
-                    $7.41{\rm{e}}10$ \cite{Che18}\\
-                    $7.5{\rm{e}}10$ \cite{Aba13}\\
-                \end{tabular}
-                
-                & \begin{tabular}[t]{@{}l@{}}
-                    $1{\rm{e}}8$ \cite{Che18} \\
-                    $2.2{\rm{e}}2$ \cite{Ved17}\\
-                    $5{\rm{e}}10$ \cite{Gao14}\\
-                \end{tabular}
-                
-                & $2{\rm{e}}11$ \cite{Che18} & $3{\rm{e}}10$ \\[1em]
-                
-    Poisson's Ratio $\nu$ & \begin{tabular}[t]{@{}l@{}}
-                                $0.2$ \cite{Che18, Gao14} \\
-                                $0.21$ \cite{Aba13} \\
-                                $0.3$ \cite{Che18} \\
-                                $0.22$ \cite{Xu10} \\
-                                $0.23$ \cite{Ved17} \\
-                                $0.25$ \cite{Che18}
-                            \end{tabular}
-                          
-                          & \begin{tabular}[t]{@{}l@{}}
-                                $0.42$ \cite{Che18} \\
-                                $0.45$ \cite{Aba13} \\
-                                $0.48$ \cite{Gao14} \\
-                                $0.49$ \cite{Che15} \\
-                                $0.495$ \cite{Ved17}
-                            \end{tabular}
-                          
-                          & $0.29$ \cite{Che18} & $0.205$\\[1em]
-                          
-    Mass damping coefficient $\mu$\tablefootnote{Rayleigh damping, viscous damping} & $0$ & $0$ & $0$ & $0$ \\[1em]
-    
-    Elastic penalty term & $2.2{\rm{e}}2$ & $2.0{\rm{e}}11$ & $3.0{\rm{e}}10$ \\[1em]
-    
-    Contact penalty (see Eq. \ref{eq:p}) & \begin{tabular}[t]{@{}l@{}}
-            $1.4{\rm{e}}11$ \\
-            $1{\rm{e}}12$ \cite{Che18}
-        \end{tabular}\\[1em]
-        
-        & \begin{tabular}[t]{@{}l@{}}
-            $4.4{\rm{e}}2$ \\
-            $1{\rm{e}}12$ \cite{Che18}
-        \end{tabular}
-        
-        & \begin{tabular}[t]{@{}l@{}}
-            $4.4{\rm{e}}2$ \\
-            $1{\rm{e}}12$ \cite{Che18}
-        \end{tabular}
-    
-        & $6{\rm{e}}10$ \\[1em]
-
-    Mode I energy rate $G_{\rm{I}}\,\left[{\rm{J}}/{\rm{m}}^2\right]$ & 
-    
-    \begin{tabular}[t]{@{}l@{}}
-            $10$ \cite{Xu10} \\
-            $3.9$ \cite{Che18} \\
-            $4.0$ \cite{Che18}
-        \end{tabular}
-        
-    & \begin{tabular}[t]{@{}l@{}}
-            $2.8{\rm{e}}3$ \cite{Hoo17} \\
-            $20$ \cite{Che18}
-        \end{tabular}  
-    
-    & $1.9{\rm{e}}5$ \cite{Sta00} & $20.0$\\[1em]
-
-    Mode II energy rate $G_{\rm{II}}\,\left[{\rm{J}}/{\rm{m}}^2\right]$ & $50$ \cite{Xu10} & $2.8{\rm{e}}3$ & $1.9{\rm{e}}5$ & $100.0$ \\[1em]
-    
-    Mode III energy rate $G_{\rm{III}}\,\left[{\rm{J}}/{\rm{m}}^2\right]$ & $50$ \cite{Xu10} & $2.8{\rm{e}}3$ & $1.9{\rm{e}}5$ & $100.0$ \\[1em]
-    
-    Tensile Strength $\sigma\,\left[{\rm{Pa}}\right]$ & \begin{tabular}[t]{@{}l@{}}
-            $6{\rm{e}}7$ \cite{Che15}\\
-            $3{\rm{e}}7$ \cite{Che18}\\
-            $3.46{\rm{e}}7$ \cite{Che18}\\
-        \end{tabular}
-        
-        & \begin{tabular}[t]{@{}l@{}}
-            $2{\rm{e}}7$ \cite{Zan12}\\
-            $1.862{\rm{e}}7$ \cite{Che18}\\
-        \end{tabular}
-        
-        & $1{\rm{e}}7$ \cite{Wu14} & $4{\rm{e}}6$\\[1em]
-        
-    Shear Strength $\tau\,\left[{\rm{Pa}}\right]$ & $17.9$ \cite{Che18} & $17.9$ \cite{Che18} & & \\[1em]
-    
-    Internal friction coefficient $\eta$ (see Eq. \ref{eq:intfriccoeff}) & $0.1$ \cite{Che15}  & $0.7$ \cite{Kun15} & $0.15$ \cite{Sah07} & $0.6$ \\[1em]
-    
-    Internal cohesion $c\,\left[{\rm{Pa}}\right]$ (see Eq. \ref{eq:MohrCoulomb}) & $7{\rm{e}}10$ & $2.2{\rm{e}}2$ & $2{\rm{e}}11$ & $8{\rm{e}}6$ \\[1em]
-    
-    Pore fluid pressure\tablefootnote{\label{notrel}not relevant for glass, \texttt{PVB} and steel} $\left[{\rm{Pa}}\right]$ & $0$ & $0$ & $0$ & $0$ \\
-    
-    Joint friction coefficient\textsuperscript{\ref{notrel}} & $0.6$ & $0.6$ & $0.6$ & $0.6$ \\
-    
-    Joint roughness coefficient $\texttt{JRC}_{\rm{0}}$ \textsuperscript{\ref{notrel}, }\tablefootnote{\label{jrc}at laboratory conditions} & $15$ & $15$ & $15$ & $15$ \\
-    
-    Joint compressive strength $\texttt{JCS}_{\rm{0}}$\textsuperscript{\ref{notrel}, \ref{jrc}} $\left[{\rm{MPa}}\right]$ & $120$ & $120$ & $120$ & $120$ \\
-    
-    Joint sample size $\left[{\rm{m}}\right]$\textsuperscript{\ref{notrel}} & $0.2$ & $0.2$ & $0.2$ & $0.2$\\[1em]
-    
-    Interface friction & $0.1$ \cite{Che15} & $0.62$ \cite{Fah07} & $0.44$ \cite{Fah07} & $0.6$ \\
-    
-    2D Problems & & & \\\bottomrule
-  \end{tabular*}
-  \label{tab:matpar}
-\end{table}
 
 %\section{Simulation Parameters}
 %\label{sec:SimulationParameters}
@@ -719,8 +752,6 @@ Gratitude to the \texttt{AMCG} group for supporting this project and to course d
 %  \caption{List of preliminary Y2D input simulation parameter values}
 %  \label{tab:inpar}
 %\end{table}
-
-\end{document}
 
 \end{document}
 

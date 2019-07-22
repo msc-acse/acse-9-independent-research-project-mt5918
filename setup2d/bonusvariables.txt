@@ -1,22 +1,22 @@
-total minimum element volume
+#total minimum element volume
+#total minimum edge
+#total real simulation time
+#critical time step glass
+#critical time step steel
+#critical time step pvb
+#critical time step rock
+#number of output files
+#projectile mesh size
+#ply mesh size
+#interlayer mesh size
 0.0337
-total minimum edge
 0.276
-total real simulation time
 10
-critical time step glass
 1.00E+99
-critical time step steel
 1.00E+99
-critical time step pvb
 1.00E+99
-critical time step rock
 1.74155E-05
-number of output files
 100
-projectile mesh size
 0.55
-ply mesh size
 0.55
-interlayer mesh size
 1.00E+99

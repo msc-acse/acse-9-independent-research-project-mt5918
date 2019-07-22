@@ -36,7 +36,7 @@ VALUE: Coulomb
 QUESTION: Initial_aperture_correlation#CB#(roughness,length)
 VALUE: roughness
 QUESTION: Generate_output_file_only#CB#(Yes,No)
-VALUE: No
+VALUE: Yes
 END PROBLEM DATA
 INTERVAL DATA
 END INTERVAL DATA
