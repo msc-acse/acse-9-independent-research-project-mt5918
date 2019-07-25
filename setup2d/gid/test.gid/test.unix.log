@@ -1,0 +1,36 @@
+                                     
+-------------------------------------
+-------------------------------------
+            LOG FILE                 
+-------------------------------------
+-------------------------------------
+                                     
+-------------------------------------
+            Variables                
+-------------------------------------
+testfile: test.y
+login: ssh mt5918@login.cx1.hpc.ic.ac.uk
+hpcdir: mt5918@login.cx1.hpc.ic.ac.uk:/rds/general/user/mt5918/home/project/setup2d
+localdir: /mnt/c/Users/micha/Documents/Github/acse-9-independent-research-project-mt5918/setup2d
+qsubdir: /opt/pbs/bin
+mayavidir: /mnt/c/tools/miniconda3/scripts
+                                     
+file: test.y
+filename: test
+fullgidfolder: ../gid/test.gid
+fullresults: ../gid/test.gid/results
+fullfilename: ../gid/test.gid/test
+fulltestfile: ../gid/test.gid/test.y
+logfile: ../gid/test.gid/test.unix.log
+                                     
+-------------------------------------
+            run program              
+-------------------------------------
+                                     
+                                     
+397665.pbs
+                                     
+-------------------------------------
+            visualize results        
+-------------------------------------
+                                     

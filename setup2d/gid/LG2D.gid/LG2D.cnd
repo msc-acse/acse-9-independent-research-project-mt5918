@@ -1,0 +1,128 @@
+CONDITION: Point-Initial-Data
+CONDTYPE: over points
+CONDMESHTYPE: over nodes
+QUESTION: Velocity#CB#(0,1)
+VALUE: 0
+QUESTION: X-Value
+VALUE: 0.0
+QUESTION: Y-Value
+VALUE: 0.0
+QUESTION: Displacement#CB#(0,1)
+VALUE: 0
+QUESTION: X-Value
+VALUE: 0.0
+QUESTION: Y-Value
+VALUE: 0.0
+END CONDITION
+
+CONDITION: Point-Constraints
+CONDTYPE: over points
+CONDMESHTYPE: over nodes
+QUESTION: Pressure-Load
+Value: 0.0
+QUESTION: Traction-Load
+Value: 0.0
+QUESTION:Amplitude-Factor:
+VALUE: 1.0
+QUESTION:Increment-Amplitude-Factor:
+VALUE: 0.0
+QUESTION: Constraints-X#CB#(Force,Acceleration,Velocity)
+Value: Force
+QUESTION: X-Value
+VALUE: 0.0
+QUESTION: Constraints-Y#CB#(Force,Acceleration,Velocity)
+Value: Force
+QUESTION: Y-Value
+VALUE: 0.0
+END CONDITION
+
+CONDITION: Line-Initial-Data
+CONDTYPE: over lines
+CONDMESHTYPE: over nodes
+QUESTION: Velocity#CB#(0,1)
+VALUE: 0
+QUESTION: X-Value
+VALUE: 0.0
+QUESTION: Y-Value
+VALUE: 0.0
+QUESTION: Displacement#CB#(0,1)
+VALUE: 0
+QUESTION: X-Value
+VALUE: 0.0
+QUESTION: Y-Value
+VALUE: 0.0
+END CONDITION
+
+CONDITION: Line-Constraints
+CONDTYPE: over Lines
+CONDMESHTYPE: over nodes
+QUESTION: Pressure-Load
+Value: 0.0
+QUESTION: Traction-Load
+Value: 0.0
+QUESTION:Amplitude-Factor:
+VALUE: 1.0
+QUESTION:Increment-Amplitude-Factor:
+VALUE: 0.0
+QUESTION: Constraints-X#CB#(Force,Acceleration,Velocity)
+Value: Force
+QUESTION: X-Value
+VALUE: 0.0
+QUESTION: Constraints-Y#CB#(Force,Acceleration,Velocity)
+Value: Force
+QUESTION: Y-Value
+VALUE: 0.0
+
+END CONDITION
+
+
+CONDITION: Surface-Initial-Data
+CONDTYPE: over surfaces
+CONDMESHTYPE: over nodes
+QUESTION: Velocity#CB#(0,1)
+VALUE: 0
+QUESTION: X-Value
+VALUE: 0.0
+QUESTION: Y-Value
+VALUE: 0.0
+QUESTION: Displacement#CB#(0,1)
+VALUE: 0
+QUESTION: X-Value
+VALUE: 0.0
+QUESTION: Y-Value
+VALUE: 0.0
+END CONDITION
+
+CONDITION: Surface-Constraints
+CONDTYPE: over surfaces
+CONDMESHTYPE: over nodes
+QUESTION: Pressure-Load
+Value: 0.0
+QUESTION: Traction-Load
+Value: 0.0
+QUESTION:Amplitude-Factor:
+VALUE: 1.0
+QUESTION:Increment-Amplitude-Factor:
+VALUE: 0.0
+QUESTION: Constraints-X#CB#(Force,Acceleration,Velocity)
+Value: Force
+QUESTION: X-Value
+VALUE: 0.0
+QUESTION: Constraints-Y#CB#(Force,Acceleration,Velocity)
+Value: Force
+QUESTION: Y-Value
+VALUE: 0.0
+
+END CONDITION
+
+
+CONDITION: Element
+CONDTYPE: over surfaces
+CONDMESHTYPE: over elements
+QUESTION: Model:#CB#(Fracture,Visco-Elastic)
+VALUE:Visco-Elastic
+QUESTION: Mesh-Refine:
+VALUE: 0
+END CONDITION
+
+

@@ -1,0 +1,67 @@
+-------------------------------------
+-------------------------------------
+            LOG FILE                 
+-------------------------------------
+-------------------------------------
+                                     
+                                     
+                                     
+-------------------------------------
+            Variables                
+-------------------------------------
+testfile: test1.y
+login: ssh mt5918@login.cx1.hpc.ic.ac.uk
+hpcdir: mt5918@login.cx1.hpc.ic.ac.uk:/rds/general/user/mt5918/home/project
+localdir: /mnt/c/Users/micha/Documents/GitHub/acse-9-independent-research-project-mt5918/setup2d
+qsubdir: /opt/pbs/bin
+mayavidir: /mnt/c/tools/miniconda3/scripts
+                                     
+file: test1.y
+filename: test1
+localresults: /mnt/c/Users/micha/Documents/GitHub/acse-9-independent-research-project-mt5918/setup2d/gid/test1.gid/results
+fullfilename: /mnt/c/Users/micha/Documents/GitHub/acse-9-independent-research-project-mt5918/setup2d/gid/test1.gid/test1
+fulltestfile: /mnt/c/Users/micha/Documents/GitHub/acse-9-independent-research-project-mt5918/setup2d/gid/test1.gid/test1.y
+logfile: /mnt/c/Users/micha/Documents/GitHub/acse-9-independent-research-project-mt5918/setup2d/gid/test1.gid/test1.unix.log
+                                     
+-------------------------------------
+            run program              
+-------------------------------------
+                                     
+**********************************************************************
+** Copyright (C) 2008,                                              **
+** Queen Mary University of London (QMUL) & Imperial College        **
+** of Science, Technology and Medicine (ICSTM). All rights reserved.**
+** Implemented for you by Dr Jiansheng Xiang                        **
+
+
+
+* This code is part of the Virtual Geoscience Workbench (VGW) developed
+* jointly by ICSTM and QMUL through two related parallel projects at 
+* ICSTM and QMUL respectively funded by EPSRC. 
+*  
+* This code is provided by copyright holders under the GNU lesser 
+* General Public License (LGPL). It is open source code; you can 
+* redistribute it and/or modify it under the terms of the GNU Lesser
+* General Public License version 3.  
+*  
+* This code is distributed in the hope that it will be useful, 
+* but WITHOUT ANY WARRANTY; without even the implied warranty 
+* of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See 
+* the GNU Lesser General Public License for more details,
+* http://www.gnu.org/licenses/lgpl.txt. 
+*  
+* You should have received a copy of the GNU Lesser General Public
+* License along with this code; if not, write to 
+* Dr Jiansheng Xiang Prof Antonio Munjiza or Dr John-Paul Latham 
+* j.xiang@imperial.ac.uk a.munjiza@qmul.ac.uk 
+* or j.p.latham@imperial.ac.uk  
+* ******************************************************************* *
+                                     
+398211.pbs
+                                     
+-------------------------------------
+            visualize results        
+-------------------------------------
+                                     
+                                     
+Done                                 

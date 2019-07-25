@@ -1,0 +1,32 @@
+#maximum number of time steps
+#gravity
+#output frequency
+#restart save frequency
+#gravity settling stage
+#load ramping stage
+#maximum dimension
+#maximum force
+#maximum velocity
+#maximum stress
+#maximum displacement
+#maximum joint aperture
+#maximum contacting couples
+#accuracy
+#joint friction model
+#initial aperture correlation
+1.00E+06
+-9.8
+1.00E+04
+1.00E+06
+0
+0
+10
+1.00E+06
+100
+1.00E+08
+2
+1.00E-07
+10000000
+32bit
+coulomb
+roughness

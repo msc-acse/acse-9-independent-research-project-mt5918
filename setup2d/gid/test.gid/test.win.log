@@ -1,0 +1,22 @@
+--------------------------------------------------- 
+Log information 
+--------------------------------------------------- 
+Log for 
+    file: "C:\Users\micha\Documents\GitHub\acse-9-independent-research-project-mt5918\setup2d\gid\test\test.win.bat" 
+    1st arg:  
+    2nd arg:  
+--------------------------------------------------- 
+Read userfile 
+--------------------------------------------------- 
+filename: test 
+logfile: test.win.log 
+n=0 
+--------------------------------------------------- 
+Run program 
+--------------------------------------------------- 
+"Stress info into VTU files" 
+"Crack info into VTU files" 
+"Visulizing the results" 
+"---------------------------------------------------" 
+"Done" 
+"---------------------------------------------------" 
