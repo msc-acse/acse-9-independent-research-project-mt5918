@@ -77,28 +77,28 @@ fi
 echo "                                     "    >> $logfile
 if [ $localy2d == 'yes' ]
 then
-    chmod +x Yf
-    chmod +x m2vtu
-    chmod +x m2vtu_crack
+    chmod +x $localdir/bin/Yf
+    chmod +x $localdir/bin/m2vtu
+    chmod +x $localdir/bin/m2vtu_crack
     echo "               s      "
     echo "run job              "
-    ./Yf $fulltestfile
+    $localdir/bin/Yf $fulltestfile
     echo "convert stress info into VTU files"
-    ./m2vtu $fullfilename $fulltestfile 1 100 1
+    $localdir/bin/m2vtu $fullfilename $fulltestfile 1 100 1
     echo "convert crack info into VTU files"
-    ./m2vtu_crack $fullfilename $fulltestfile 1 100 1
+    $localdir/bin/m2vtu_crack $fullfilename $fulltestfile 1 100 1
 echo "                                     "    >> $logfile
 echo "-------------------------------------"    >> $logfile
 echo "            move files               "    >> $logfile
 echo "-------------------------------------"    >> $logfile
 echo "                                     "    >> $logfile
-    mv -v *.ym $localresults                            >> $logfile
-    mv -v *.y $localresults                             >> $logfile
-    mv -v .msh $localresults                            >> $logfile
-    mv -v contactforce.txt $localresults                >> $logfile
-    mv -v *.vtu $localresults                           >> $logfile
-    mv -v *.vtu_crack $localresults                     >> $logfile
-    mv -v Ytmp $localresults                            >> $logfile
+    mv -v ../*.ym $localresults                            >> $logfile
+    mv -v ../*.y $localresults                             >> $logfile
+    mv -v ../.msh $localresults                            >> $logfile
+    mv -v ../contactforce.txt $localresults                >> $logfile
+    mv -v ../*.vtu $localresults                           >> $logfile
+    mv -v ../*.vtu_crack $localresults                     >> $logfile
+    mv -v ../Ytmp $localresults                            >> $logfile
 else
     #replace every instance 'test' by '${filename}' in script file
     sed -i "s|test|${filename}|g" ${localdir}/scripts/script.sh                     >> $logfile

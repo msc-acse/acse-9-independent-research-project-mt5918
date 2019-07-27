@@ -1,7 +1,7 @@
 # generate dat file? 
 yes
 # test file name with extension 
-test1.y
+test3.y
 # bash SSH Login for Imperial College HPC 
 ssh mt5918@login.cx1.hpc.ic.ac.uk
 # hpc project directory 

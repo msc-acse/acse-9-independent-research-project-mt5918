@@ -1,4 +1,4 @@
-BeginZE C:\Users\micha\Documents\GitHub\acse-9-independent-research-project-mt5918\setup2d\test3.gid\test3.vv
+BeginZE C:\Users\micha\Documents\GitHub\acse-9-independent-research-project-mt5918\setup2d\gid\test3.gid\test3.vv
    x -0.0982974 0.103898
    y 0.0480247 -0.0448648
    z -0.28523 0.28523
@@ -29,5 +29,5 @@ BeginZE C:\Users\micha\Documents\GitHub\acse-9-independent-research-project-mt59
    OGLStereo(EyeDistance) 0.075
    OGLStereo(LeftEyeDistance) 1 0 0 1
    OGLStereo(RightEyeDistance) 0 1 1 1
-EndZE C:\Users\micha\Documents\GitHub\acse-9-independent-research-project-mt5918\setup2d\test3.gid\test3.vv
+EndZE C:\Users\micha\Documents\GitHub\acse-9-independent-research-project-mt5918\setup2d\gid\test3.gid\test3.vv
 

@@ -14,6 +14,7 @@
 #accuracy
 #joint friction model
 #initial aperture correlation
+
 1.00E+06
 -9.8
 1.00E+04

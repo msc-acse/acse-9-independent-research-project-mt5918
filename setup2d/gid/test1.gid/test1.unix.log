@@ -57,7 +57,12 @@ logfile: /mnt/c/Users/micha/Documents/GitHub/acse-9-independent-research-project
 * or j.p.latham@imperial.ac.uk  
 * ******************************************************************* *
                                      
-398211.pbs
+                                     
+-------------------------------------
+            move files               
+-------------------------------------
+                                     
+renamed '../test1.y' -> '/mnt/c/Users/micha/Documents/GitHub/acse-9-independent-research-project-mt5918/setup2d/gid/test1.gid/results/test1.y'
                                      
 -------------------------------------
             visualize results        
