@@ -2,6 +2,8 @@
 #PBS -l walltime=01:00:00
 #PBS -l select=1:ncpus=2:mem=96gb
 #PBS -N test
+###PBS -J 1-10
+### $PBS_ARRAY_INDEX
 
 module load vtk/5.8.0
 module load paramodule load paraview/5.6.1
@@ -17,9 +19,9 @@ chmod 777 Yf
 chmod 777 m2vtu         
 chmod 777 m2vtu_crack   
 
-./Yf test                           
-./m2vtu test test.y 1 100 1         
-./m2vtu_crack test test.y 1 100 1   
+../bin/Yf test                           
+../bin/m2vtu test test.y 1 100 1         
+../bin/m2vtu_crack test test.y 1 100 1   
 
 mkdir -p $HOME/project/results2d/test
 

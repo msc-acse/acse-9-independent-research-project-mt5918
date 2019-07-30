@@ -1,0 +1,95 @@
+# #title with hashtag
+# type (polygon, circle)
+# material
+# if polygon:
+#    x y [m] coordinates counter-clockwise
+# if circle:
+#    center x y [m]
+#    radius [m]
+
+#left support
+polygon
+steel
+0 0
+0.015 0
+0.015 0.003
+0.003 0.003
+0.003 0.01976
+0.015 0.01976
+0.015 0.02276
+0 0.2276
+
+#left upper spacer
+polygon
+pvb
+0.006 0.01676
+0.015 0.01676
+0.015 0.01976
+0.006 0.01976
+
+#left bottom spacer
+polygon
+pvb
+0.006 0.003
+0.015 0.003
+0.015 0.006
+0.006 0.006
+
+#upper ply
+polygon
+glass
+0.006 0.01176
+0.166 0.01176
+0.166 0.01676
+0.006 0.01676
+
+#lower ply
+polygon
+glass
+0.006 0.006
+0.166 0.006
+0.166 0.011
+0.006 0.011
+
+# inter-layer
+pvb
+0.006 0.011
+0.166 0.011
+0.166 0.01176
+0.006 0.01176
+
+# right support
+polygon
+steel
+0.157 0
+0.172 0
+0.172 0.02276
+0.157 0.02276
+0.157 0.01976
+0.169 0.01976
+0.169 0.003
+0.157 0.003
+
+#right upper spacer
+polygon
+pvb
+0.157 0.01676
+0.166 0.01676
+0.166 0.01976
+0.157 0.01976
+
+#right lower spacer
+polygon
+pvb
+0.157 0.003
+0.166 0.003
+0.166 0.006
+0.157 0.006
+
+#projectile
+circle
+steel
+0.086 0.02176
+0.005
+
+

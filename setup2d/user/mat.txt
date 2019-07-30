@@ -1,9 +1,7 @@
+# material name
 # density
 # YoungsModulus
 # Poisson Ratio
-# Massdamping coefficient
-# Elastic Penalty factor
-# Contact penalty factor
 # mode 1 energy rate
 # mode 2 energy rate
 # tensile strength
@@ -26,9 +24,6 @@ rock
 2700
 3.00E+10
 0.205
-0
-3.00E+11
-3.00E+11
 20
 100
 4.00E+06
@@ -51,9 +46,6 @@ glas
 2500
 7.00E+10
 0.23
-0
-7.00E+11
-7.00E+11
 10
 50
 3.46E+07
@@ -76,9 +68,6 @@ steel
 7800
 2.00E+11
 0.29
-0
-2.00E+12
-2.00E+12
 1.90E+05
 1.90E+05
 1.00E+07
@@ -101,9 +90,6 @@ pvb
 1100
 1.00E+08
 0.495
-0
-1.00E+09
-1.00E+09
 20
 2800
 2.00E+07

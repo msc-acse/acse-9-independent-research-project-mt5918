@@ -25,9 +25,11 @@ hpcdir=$(sed '8q;d' $userfile)
 qsubdir=$(sed '12q;d' $userfile)
 mayavidir=$(sed '16q;d' $userfile)
 localy2d=$(sed '18q;d' $userfile)
-giddir=$(sed '22q;d' $userfile)
+#giddir=$(sed '22q;d' $userfile)
+giddir=$(which gid)
 y2ddir=$(sed '26q;d' $userfile)
 paraviewdir=$(sed '30q;d' $userfile)
+gmshdir=$(which gmsh)
 echo "                                     "
 # get file name
 file=$(basename -- "$testfile")
@@ -36,6 +38,7 @@ localresults="${localdir}/gid/${filename}.gid/results"
 fullfilename="${localdir}/gid/${filename}.gid/${filename}"
 fulltestfile="${fullfilename}.y"   
 logfile="${fullfilename}.unix.log"
+#
 rm $logfile                                  
 echo "-------------------------------------"    >> $logfile
 echo "-------------------------------------"    >> $logfile
@@ -43,7 +46,7 @@ echo "            LOG FILE                 "    >> $logfile
 echo "-------------------------------------"    >> $logfile
 echo "-------------------------------------"    >> $logfile
 rm -r $localresults                             >> $logfile
-mkdir -p $localresults                             >> $logfile
+mkdir -p $localresults                          >> $logfile
 cd $localresults                                >> $logfile
 echo "                                     "    >> $logfile
 echo "                                     "    >> $logfile
@@ -57,6 +60,7 @@ echo "hpcdir: $hpcdir"                          >> $logfile
 echo "localdir: $localdir"                      >> $logfile
 echo "qsubdir: $qsubdir"                        >> $logfile
 echo "mayavidir: $mayavidir"                    >> $logfile
+echo "gmshdir: $gmshdir"                        >> $logfile
 echo "                                     "    >> $logfile
 echo "file: $file"                              >> $logfile
 echo "filename: $filename"                      >> $logfile
@@ -72,15 +76,32 @@ echo "                                     "    >> $logfile
     
 if [ $generate == 'yes' ]
 then
-    $localdir/gid/B2D.gid/GID_B2D.exe $fullfilename.dat $fullfilename.par >> $logfile
+    # execute gid: bad documentation, command unknown
+    #$localdir/gid/B2D.gid/GID_B2D.exe $fullfilename.dat $fullfilename.par >> $logfile
+    #
+    # generate the y input file
+    # g++ -o executable  -I/usr/include/gmsh
+    g++ $localdir/cpp/ygen.cpp $gmshdir
 fi
+#
 echo "                                     "    >> $logfile
+#
+#
+# execute y2d locally?
 if [ $localy2d == 'yes' ]
 then
+    #
+    #
+    # give permission to Y program
+    #
+    #
     chmod +x $localdir/bin/Yf
     chmod +x $localdir/bin/m2vtu
     chmod +x $localdir/bin/m2vtu_crack
-    echo "               s      "
+    echo "                      "
+    #
+    # 
+    #
     echo "run job              "
     $localdir/bin/Yf $fulltestfile
     echo "convert stress info into VTU files"
@@ -92,6 +113,13 @@ echo "-------------------------------------"    >> $logfile
 echo "            move files               "    >> $logfile
 echo "-------------------------------------"    >> $logfile
 echo "                                     "    >> $logfile
+    #
+    #
+    #
+    # move all files into the results folder
+    #
+    #
+    #
     mv -v ../*.ym $localresults                            >> $logfile
     mv -v ../*.y $localresults                             >> $logfile
     mv -v ../.msh $localresults                            >> $logfile
@@ -100,31 +128,67 @@ echo "                                     "    >> $logfile
     mv -v ../*.vtu_crack $localresults                     >> $logfile
     mv -v ../Ytmp $localresults                            >> $logfile
 else
-    #replace every instance 'test' by '${filename}' in script file
+    #
+    # replace every instance 'test' by '${filename}' in script file
+    #
+    #
+    #
     sed -i "s|test|${filename}|g" ${localdir}/scripts/script.sh                     >> $logfile
     sed -i 's|$HOME/project|'${hpcdir}'|g' ${localdir}/scripts/script.sh    >> $logfile
     sed -i 's|localresults|'${localresults}'|g' ${localdir}/scripts/script.sh       >> $logfile
+    #
+    #
+    #
+    #prepare hpc setup
+    #
+    #
+        # create results folder
     hpcresults=${hpcdir}/results2d
     $login mkdir -p $hpcresults                             >> $logfile
-    #prepare hpc setup
+    #
+    #
+        # get the setup from local directory
+    #
+    #
     $login rm -r $hpcdir/setup2d                            >> $logfile
     $login mkdir -p $hpcdir/setup2d                                 >> $logfile
-    scp -r $localdir $hpcdir/setup2d                                >> $logfile
+    scp -r $localdir $hpcdir                                >> $logfile
+    #
+    #
+    #
+    ###########################################################################
     #run hpc
+    ###########################################################################
+    #
+    #
+    # need to call qsub with the path from hpc home
     shorthpcdir=${hpcdir#*home}
     $login $qsubdir/qsub project/setup2d/scripts/script.sh          >> $logfile
-    
+    #
+    #
+    #
+    # revert changes to script file
+    #
     sed -i "s|${filename}|test|g" ${localdir}/scripts/script.sh                     >> $logfile
     sed -i 's|'${hpcdir}'|$HOME/project|g' ${localdir}/scripts/script.sh    >> $logfile
     sed -i 's|'${localresults}'|localresults|g' ${localdir}/scripts/script.sh       >> $logfile
+    #
+    #
+    #
 fi
 echo "                                     " >> $logfile
 echo "-------------------------------------" >> $logfile
 echo "            visualize results        " >> $logfile
 echo "-------------------------------------" >> $logfile
 echo "                                     " >> $logfile
+#
+#
+#
 #wait
 #"$mayavidir/mayavi2" -d ${fullfilename}0.vtu -m SurfaceMap -f ExtractTensorComponents -d ${fullfilename}_crack0.vtu -m SurfaceMap   >> $logfile
 #"$paraviewdir/paraview.exe" $localresults/${filename}*.vtu $localresults/${filename}_crack*.vtu      >> $logfile
+#
+#
+#
 echo "                                     "            >> $logfile
 echo "Done                                 "            >> $logfile

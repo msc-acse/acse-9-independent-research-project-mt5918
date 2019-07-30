@@ -1,6 +1,6 @@
 NUMBER: 1 MATERIAL: Rock
 QUESTION: Density_(kg/m3):
-VALUE: 2700.0
+VALUE: 2700
 QUESTION: Young's_modulus_(Pa):
 VALUE: 3e+10
 QUESTION: Poisson's_ratio:

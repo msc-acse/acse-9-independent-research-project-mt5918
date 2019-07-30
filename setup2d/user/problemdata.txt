@@ -1,10 +1,8 @@
 #maximum number of time steps
 #gravity
-#output frequency
-#restart save frequency
+#number of output files
 #gravity settling stage
 #load ramping stage
-#maximum dimension
 #maximum force
 #maximum velocity
 #maximum stress
@@ -15,10 +13,16 @@
 #joint friction model
 #initial aperture correlation
 
+#total minimum element volume
+#total minimum edge
+#total real simulation time
+#projectile mesh size
+#ply mesh size
+#interlayer mesh size
+
 1.00E+06
 -9.8
-1.00E+04
-1.00E+06
+100
 0
 0
 10
@@ -31,3 +35,15 @@
 32bit
 coulomb
 roughness
+
+0.0337
+0.276
+10
+0.55
+0.55
+0.55
+
+#Optional
+#Enforce
+#output frequency
+#restart save frequency

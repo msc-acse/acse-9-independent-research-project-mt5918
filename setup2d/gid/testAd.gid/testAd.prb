@@ -1,6 +1,6 @@
 PROBLEM DATA
 QUESTION: Maximum_number_time_steps:
-VALUE: 2000
+VALUE: 20000
 QUESTION: Gravity_(m/s2):
 VALUE: -9.8
 QUESTION: Time_step_(s):
@@ -8,7 +8,7 @@ VALUE: 3.0e-10
 QUESTION: Output_frequency:
 VALUE: 200
 QUESTION: Restart_save_frequency:
-VALUE: 2000
+VALUE: 20000
 QUESTION: Gravity_settling_stage_(s):
 VALUE: 0.0
 QUESTION: Load_ramping_stage_(s):

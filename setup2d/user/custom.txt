@@ -1,0 +1,9 @@
+# userfile
+# materials file
+# problem data (control data)
+# geometryfile
+
+../user/config.txt
+../user/mat.txt
+../user/problemdata.txt
+../user/geometry.txt
