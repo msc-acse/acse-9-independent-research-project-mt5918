@@ -16,7 +16,7 @@ chmod 777 Yf
 chmod 777 m2vtu
 chmod 777 m2vtu_crack
 
-./Yf test
+./Yf test.y
 ./m2vtu test test.y 1 100 1
 ./m2vtu_crack test test.y 1 100 1
 
