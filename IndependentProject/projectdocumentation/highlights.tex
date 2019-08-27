@@ -1,0 +1,30 @@
+\bigbreak
+
+\bigbreak
+\noindent{\color{blue}\textbf{\printdate{2019-7-01}}}
+There is an {\color{red} error} with the simulations. The \texttt{Y2D} code will compile, but the visualised output in \texttt{paraview} consists of random stripes and patterns.
+
+\bigbreak
+\noindent{\color{blue}\textbf{\printdate{2019-7-18}}}
+The material parameters and simulation parameters are wrong. They need to be adjusted using formulas. This did not remove the visualisation errors, however.
+
+\bigbreak
+\noindent{\color{blue}\textbf{\printdate{2019-7-25}}} - {\color{blue}\textbf{\printdate{2019-7-28}}}
+A \texttt{c++} file to generate the y file directly is now created, though still some bugs. However, the geometry still needs to be created separately independently. The approach is not scientifically relevant and was therefore abandoned.
+
+\bigbreak
+\noindent{\color{blue}\textbf{\printdate{2019-7-29}}}
+Breakthrough during session with supervisor: The nodes for each element were listed in the wrong rotational order (counter-clockwise / clockwise), this lead to negative area, which lead to negative mass, which lead to code compilation errors. The error was perhaps produced by using \texttt{GiD} or \texttt{Y2D} code with the wrong operating system.
+
+\bigbreak
+\noindent{\color{blue}\textbf{\printdate{2019-8-02}}}
+The simulations are running now, and showing good geometry. However, the body interactions are completely wrong. For example, a steel ball deforms on contact with the glass plies, instead of breaking it.
+
+\bigbreak
+\noindent{\color{blue}\textbf{\printdate{2019-8-07}}}\\
+Legacy \texttt{vtk} file output works. \\
+\texttt{VTK} \texttt{XML} file format output works, but only for \texttt{ascii} encoding.
+
+\bigbreak
+\noindent{\color{blue}\textbf{\printdate{2019-8-19}}}\\
+\texttt{VTK} \texttt{XML} \texttt{b64} encoding looks relatively genuine, although there are still errors.

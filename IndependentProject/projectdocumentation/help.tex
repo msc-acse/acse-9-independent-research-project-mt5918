@@ -1,0 +1,67 @@
+{\color{blue}\textbf{\printdate{2019-07-21}}}
+
+\bigbreak
+\noindent\textbf{Parameters}\\
+What are these parameters?:
+\begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=1ex,parsep=1ex,label=\Alph*)]
+    \item \texttt{/ YD / YDC / ICFMTY}
+    \item \texttt{/ YD / YDC / ICIATY}
+\end{enumerate}
+
+{\color{green}SOLVED}
+
+\bigbreak
+\noindent\textbf{HPC walk-in clinic \textbf{\printdate{2019-07-23}}}
+        \begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=1ex,parsep=1ex,label=\Alph*)]
+            \item remove standard output and error from home directory
+            \item make qsub.sh and qstat.sh working from local directory, for both ubuntu subsystem and git bash
+            \item why do the paths work without variable but not with variables in bash, e.g. \$variable/qsub vs. bin/qsub
+            \item scp secure copy does "setup2d/setup2d" -> I am confusing a subdirectory, how to copy directory into directory?
+            \item .bashrc and .bash\_profile are broken in git bash, /esc/skil is empty;	where to get a fresh copy
+            \item use paraview in hpc, should be all set up
+            \item copy and paste with nano and vim
+        \end{enumerate}
+        
+{\color{green}SOLVED}
+
+\bigbreak
+\noindent\textbf{Simulations}\\
+Modify material parameters for geometry 1, e.g. penalty factor, buffer size. Studying the \texttt{2D} \texttt{Y} Code might give answers as to why the calculation breaks. An attempt is being made to write a \texttt{C++} program to generate a Y file. This could eventually then be integrated in the automation system to generate the Y file, automatically send it to the \texttt{HPC} system, calculate it and automatically analyse it using \texttt{Paraview}.
+{\color{green}SOLVED}
+
+\bigbreak
+\noindent{\color{blue}\textbf{\printdate{2019-07-22}}} Feedback on approaches.
+{\color{green}SOLVED}
+
+\bigbreak
+\noindent{\color{blue}\textbf{\printdate{2019-07-23}}} How to calculate the y file with windows batch file?
+{\color{green}SOLVED}
+
+\bigbreak
+\noindent{\color{blue}\textbf{\printdate{2019-07-24}}} As the supervisors are away, there are no new revelations about what could have gone wrong with these simple simulations. An email was sent to the supervisors concerning questions about GiD:
+
+\begin{enumerate}[topsep=0pt,itemsep=-1ex,partopsep=1ex,parsep=1ex,label=\Alph*)]
+    \item What is the command line command to convert files in a GiD folder to a \texttt{Y} file?
+    \item Do I need to create a new problem type instead of \texttt{B2D}?
+    \item What is the \texttt{.dat} file and do I need it if I have y files?
+\end{enumerate}
+{\color{green}SOLVED}
+
+\bigbreak
+\noindent{\color{blue}\textbf{\printdate{2019-08-03}}}
+There is an error with the node count in the \texttt{Y2D} program - the number of nodes of two rectangles drifting apart increases from $8$ to $20$, seemingly randomly. A non-buggy version of the code would be helpful, even if less developed. Otherwise time will be spent on fixing the errors.
+
+{\color{green}SOLVED}: Supervisor said this is right, this is the creation of joint elements. Though why are they combined with the original elements, i.e. how to distinguish the two?
+
+\bigbreak
+What use is \texttt{GiD} on the \texttt{Linux} remote server? Command line arguments of calculating \texttt{.y} files from \texttt{.dat} files are not known to me (cannot be found in any manual), and a \texttt{GiD} \texttt{GUI} would surely not exist on \texttt{Linux}.
+
+{\color{green}SOLVED}: Geraldo helped, gui works, {\color{blue}\textbf{\printdate{2019-08-06}}}: Santiago (\texttt{HPC} \texttt{RCS}) showed a way of enabling \texttt{X11} on \texttt{ese-pollux} remote server - thus making \texttt{putty} potentially superfluous. 
+
+\bigbreak
+\noindent{\color{blue}\textbf{\printdate{2019-08-03}}}
+How to access the original elements and nodes - without the joint elements? Is this even necessary for the creation of the \texttt{vtk} files? It will be vital for the creation of joint elements between materials. {\color{green}SOLVED}: by the student. It is necessary to specify all points and elements, including the joint element ones in the output file. \texttt{paraview} knows what to do with them. No need to separate. 
+
+\bigbreak
+\noindent{\color{blue}\textbf{\printdate{2019-08-14}}}
+Why is the encoding not working: What is the exact format of the vtk xml b64 encoded file?
