@@ -104,7 +104,7 @@ After configuration, one or more bash scripts (depending on whether *HPC* is use
 
     - test.sh runs the following programs subsequently, using the *GID*-generated input y file as a command argument 
         - Yf
-        - m2vtu and_
+        - m2vtu and
         - m2vtu_crack
     - script.sh is a submittable HPC script in case the HPC system is used.
     - qstat.sh to check whether the HPC job has finished in case the HPC system was used.
