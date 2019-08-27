@@ -20,11 +20,11 @@ chmod 777 m2vtu_crack
 ./m2vtu test test.y 1 100 1
 ./m2vtu_crack test test.y 1 100 1
 
-mkdir -p $HOME/project/setup2d/../results2d/test
+mkdir -p $HOME/project/setup2d/../results
 
-cp ./* $HOME/project/setup2d/../results2d/test
+cp ./* $HOME/project/setup2d/../results
 
-while [ 1 ]; do
-CLIENT=$(cat $HOME/pvclient.txt)
-pvserver --force-offscreen-rendering -rc --client-host=$CLIENT --sp=1111
-done
+#while [ 1 ]; do
+#CLIENT=$(cat $HOME/pvclient.txt)
+#pvserver --force-offscreen-rendering -rc --client-host=$CLIENT --sp=1111
+#done

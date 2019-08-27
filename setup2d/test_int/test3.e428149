@@ -1,0 +1,306 @@
+mkdir: cannot create directory ‘/rds/general/user/mt5918/ephemeral/test3’: File exists
+cp: cannot stat ‘/rds/general/user/mt5918/home/test3/*’: No such file or directory
+    0 /  100
+    1 /  100
+    2 /  100
+    3 /  100
+    4 /  100
+    5 /  100
+    6 /  100
+    7 /  100
+    8 /  100
+    9 /  100
+   10 /  100
+   11 /  100
+   12 /  100
+   13 /  100
+   14 /  100
+   15 /  100
+   16 /  100
+   17 /  100
+   18 /  100
+   19 /  100
+   20 /  100
+   21 /  100
+   22 /  100
+   23 /  100
+   24 /  100
+   25 /  100
+   26 /  100
+   27 /  100
+   28 /  100
+   29 /  100
+   30 /  100
+   31 /  100
+   32 /  100
+   33 /  100
+   34 /  100
+   35 /  100
+   36 /  100
+   37 /  100
+   38 /  100
+   39 /  100
+   40 /  100
+   41 /  100
+   42 /  100
+   43 /  100
+   44 /  100
+   45 /  100
+   46 /  100
+   47 /  100
+   48 /  100
+   49 /  100
+   50 /  100
+   51 /  100
+   52 /  100
+   53 /  100
+   54 /  100
+   55 /  100
+   56 /  100
+   57 /  100
+   58 /  100
+   59 /  100
+   60 /  100
+   61 /  100
+   62 /  100
+   63 /  100
+   64 /  100
+   65 /  100
+   66 /  100
+   67 /  100
+   68 /  100
+   69 /  100
+   70 /  100
+   71 /  100
+   72 /  100
+   73 /  100
+   74 /  100
+   75 /  100
+   76 /  100
+   77 /  100
+   78 /  100
+   79 /  100
+   80 /  100
+   81 /  100
+   82 /  100
+   83 /  100
+   84 /  100
+   85 /  100
+   86 /  100
+   87 /  100
+   88 /  100
+   89 /  100
+   90 /  100
+   91 /  100
+   92 /  100
+   93 /  100
+   94 /  100
+   95 /  100
+   96 /  100
+   97 /  100
+   98 /  100
+   99 /  100
+   ***** Y HAS ORDERLY FINISHED *****
+Writing vtk xml file test3_crack1.vtu
+Writing vtk xml file test3_crack2.vtu
+Writing vtk xml file test3_crack3.vtu
+Writing vtk xml file test3_crack4.vtu
+Writing vtk xml file test3_crack5.vtu
+Writing vtk xml file test3_crack6.vtu
+Writing vtk xml file test3_crack7.vtu
+Writing vtk xml file test3_crack8.vtu
+Writing vtk xml file test3_crack9.vtu
+Writing vtk xml file test3_crack10.vtu
+Writing vtk xml file test3_crack11.vtu
+Writing vtk xml file test3_crack12.vtu
+Writing vtk xml file test3_crack13.vtu
+Writing vtk xml file test3_crack14.vtu
+Writing vtk xml file test3_crack15.vtu
+Writing vtk xml file test3_crack16.vtu
+Writing vtk xml file test3_crack17.vtu
+Writing vtk xml file test3_crack18.vtu
+Writing vtk xml file test3_crack19.vtu
+Writing vtk xml file test3_crack20.vtu
+Writing vtk xml file test3_crack21.vtu
+Writing vtk xml file test3_crack22.vtu
+Writing vtk xml file test3_crack23.vtu
+Writing vtk xml file test3_crack24.vtu
+Writing vtk xml file test3_crack25.vtu
+Writing vtk xml file test3_crack26.vtu
+Writing vtk xml file test3_crack27.vtu
+Writing vtk xml file test3_crack28.vtu
+Writing vtk xml file test3_crack29.vtu
+Writing vtk xml file test3_crack30.vtu
+Writing vtk xml file test3_crack31.vtu
+Writing vtk xml file test3_crack32.vtu
+Writing vtk xml file test3_crack33.vtu
+Writing vtk xml file test3_crack34.vtu
+Writing vtk xml file test3_crack35.vtu
+Writing vtk xml file test3_crack36.vtu
+Writing vtk xml file test3_crack37.vtu
+Writing vtk xml file test3_crack38.vtu
+Writing vtk xml file test3_crack39.vtu
+Writing vtk xml file test3_crack40.vtu
+Writing vtk xml file test3_crack41.vtu
+Writing vtk xml file test3_crack42.vtu
+Writing vtk xml file test3_crack43.vtu
+Writing vtk xml file test3_crack44.vtu
+Writing vtk xml file test3_crack45.vtu
+Writing vtk xml file test3_crack46.vtu
+Writing vtk xml file test3_crack47.vtu
+Writing vtk xml file test3_crack48.vtu
+Writing vtk xml file test3_crack49.vtu
+Writing vtk xml file test3_crack50.vtu
+Writing vtk xml file test3_crack51.vtu
+Writing vtk xml file test3_crack52.vtu
+Writing vtk xml file test3_crack53.vtu
+Writing vtk xml file test3_crack54.vtu
+Writing vtk xml file test3_crack55.vtu
+Writing vtk xml file test3_crack56.vtu
+Writing vtk xml file test3_crack57.vtu
+Writing vtk xml file test3_crack58.vtu
+Writing vtk xml file test3_crack59.vtu
+Writing vtk xml file test3_crack60.vtu
+Writing vtk xml file test3_crack61.vtu
+Writing vtk xml file test3_crack62.vtu
+Writing vtk xml file test3_crack63.vtu
+Writing vtk xml file test3_crack64.vtu
+Writing vtk xml file test3_crack65.vtu
+Writing vtk xml file test3_crack66.vtu
+Writing vtk xml file test3_crack67.vtu
+Writing vtk xml file test3_crack68.vtu
+Writing vtk xml file test3_crack69.vtu
+Writing vtk xml file test3_crack70.vtu
+Writing vtk xml file test3_crack71.vtu
+Writing vtk xml file test3_crack72.vtu
+Writing vtk xml file test3_crack73.vtu
+Writing vtk xml file test3_crack74.vtu
+Writing vtk xml file test3_crack75.vtu
+Writing vtk xml file test3_crack76.vtu
+Writing vtk xml file test3_crack77.vtu
+Writing vtk xml file test3_crack78.vtu
+Writing vtk xml file test3_crack79.vtu
+Writing vtk xml file test3_crack80.vtu
+Writing vtk xml file test3_crack81.vtu
+Writing vtk xml file test3_crack82.vtu
+Writing vtk xml file test3_crack83.vtu
+Writing vtk xml file test3_crack84.vtu
+Writing vtk xml file test3_crack85.vtu
+Writing vtk xml file test3_crack86.vtu
+Writing vtk xml file test3_crack87.vtu
+Writing vtk xml file test3_crack88.vtu
+Writing vtk xml file test3_crack89.vtu
+Writing vtk xml file test3_crack90.vtu
+Writing vtk xml file test3_crack91.vtu
+Writing vtk xml file test3_crack92.vtu
+Writing vtk xml file test3_crack93.vtu
+Writing vtk xml file test3_crack94.vtu
+Writing vtk xml file test3_crack95.vtu
+Writing vtk xml file test3_crack96.vtu
+Writing vtk xml file test3_crack97.vtu
+Writing vtk xml file test3_crack98.vtu
+Writing vtk xml file test3_crack99.vtu
+Start to convert files
+Writing vtu xml file test31.vtu
+Writing vtu xml file test32.vtu
+Writing vtu xml file test33.vtu
+Writing vtu xml file test34.vtu
+Writing vtu xml file test35.vtu
+Writing vtu xml file test36.vtu
+Writing vtu xml file test37.vtu
+Writing vtu xml file test38.vtu
+Writing vtu xml file test39.vtu
+Writing vtu xml file test310.vtu
+Writing vtu xml file test311.vtu
+Writing vtu xml file test312.vtu
+Writing vtu xml file test313.vtu
+Writing vtu xml file test314.vtu
+Writing vtu xml file test315.vtu
+Writing vtu xml file test316.vtu
+Writing vtu xml file test317.vtu
+Writing vtu xml file test318.vtu
+Writing vtu xml file test319.vtu
+Writing vtu xml file test320.vtu
+Writing vtu xml file test321.vtu
+Writing vtu xml file test322.vtu
+Writing vtu xml file test323.vtu
+Writing vtu xml file test324.vtu
+Writing vtu xml file test325.vtu
+Writing vtu xml file test326.vtu
+Writing vtu xml file test327.vtu
+Writing vtu xml file test328.vtu
+Writing vtu xml file test329.vtu
+Writing vtu xml file test330.vtu
+Writing vtu xml file test331.vtu
+Writing vtu xml file test332.vtu
+Writing vtu xml file test333.vtu
+Writing vtu xml file test334.vtu
+Writing vtu xml file test335.vtu
+Writing vtu xml file test336.vtu
+Writing vtu xml file test337.vtu
+Writing vtu xml file test338.vtu
+Writing vtu xml file test339.vtu
+Writing vtu xml file test340.vtu
+Writing vtu xml file test341.vtu
+Writing vtu xml file test342.vtu
+Writing vtu xml file test343.vtu
+Writing vtu xml file test344.vtu
+Writing vtu xml file test345.vtu
+Writing vtu xml file test346.vtu
+Writing vtu xml file test347.vtu
+Writing vtu xml file test348.vtu
+Writing vtu xml file test349.vtu
+Writing vtu xml file test350.vtu
+Writing vtu xml file test351.vtu
+Writing vtu xml file test352.vtu
+Writing vtu xml file test353.vtu
+Writing vtu xml file test354.vtu
+Writing vtu xml file test355.vtu
+Writing vtu xml file test356.vtu
+Writing vtu xml file test357.vtu
+Writing vtu xml file test358.vtu
+Writing vtu xml file test359.vtu
+Writing vtu xml file test360.vtu
+Writing vtu xml file test361.vtu
+Writing vtu xml file test362.vtu
+Writing vtu xml file test363.vtu
+Writing vtu xml file test364.vtu
+Writing vtu xml file test365.vtu
+Writing vtu xml file test366.vtu
+Writing vtu xml file test367.vtu
+Writing vtu xml file test368.vtu
+Writing vtu xml file test369.vtu
+Writing vtu xml file test370.vtu
+Writing vtu xml file test371.vtu
+Writing vtu xml file test372.vtu
+Writing vtu xml file test373.vtu
+Writing vtu xml file test374.vtu
+Writing vtu xml file test375.vtu
+Writing vtu xml file test376.vtu
+Writing vtu xml file test377.vtu
+Writing vtu xml file test378.vtu
+Writing vtu xml file test379.vtu
+Writing vtu xml file test380.vtu
+Writing vtu xml file test381.vtu
+Writing vtu xml file test382.vtu
+Writing vtu xml file test383.vtu
+Writing vtu xml file test384.vtu
+Writing vtu xml file test385.vtu
+Writing vtu xml file test386.vtu
+Writing vtu xml file test387.vtu
+Writing vtu xml file test388.vtu
+Writing vtu xml file test389.vtu
+Writing vtu xml file test390.vtu
+Writing vtu xml file test391.vtu
+Writing vtu xml file test392.vtu
+Writing vtu xml file test393.vtu
+Writing vtu xml file test394.vtu
+Writing vtu xml file test395.vtu
+Writing vtu xml file test396.vtu
+Writing vtu xml file test397.vtu
+Writing vtu xml file test398.vtu
+Writing vtu xml file test399.vtu
+cp: omitting directory ‘./bin’
+cp: omitting directory ‘./mt5918@login.cx1.hpc.ic.ac.uk:’
+cp: omitting directory ‘./results2d’
+cp: omitting directory ‘./test3.gid’

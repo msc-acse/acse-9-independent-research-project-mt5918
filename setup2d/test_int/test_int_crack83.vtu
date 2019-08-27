@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<VTKFile type="UnstructuredGrid" version="0.1" byte_order="LittleEndian" compressor="vtkZLibDataCompressor">
+  <UnstructuredGrid>
+    <Piece NumberOfPoints="32"                   NumberOfCells="16"                  >
+      <PointData Scalars="Fracture type" Vectors="Contact force">
+        <DataArray type="Float64" Name="Shear displacement" format="appended" RangeMin="0"                    RangeMax="0"                    offset="0"                   />
+        <DataArray type="Float64" Name="Failure mode" format="appended" RangeMin="-1"                   RangeMax="-1"                   offset="40"                  />
+        <DataArray type="Float64" Name="Fracture type" format="appended" RangeMin="-1"                   RangeMax="-1"                   offset="88"                  />
+        <DataArray type="Float64" Name="Contact force" NumberOfComponents="3" format="appended" RangeMin="0.021554848046"       RangeMax="0.021554848046"       offset="136"                 />
+      </PointData>
+      <CellData>
+      </CellData>
+      <Points>
+        <DataArray type="Float32" Name="Points" NumberOfComponents="3" format="appended" RangeMin="0.00096842135347"     RangeMax="1.4148012958"         offset="196"                 />
+      </Points>
+      <Cells>
+        <DataArray type="Int64" Name="connectivity" format="appended" RangeMin=""                     RangeMax=""                     offset="348"                 />
+        <DataArray type="Int64" Name="offsets" format="appended" RangeMin=""                     RangeMax=""                     offset="460"                 />
+        <DataArray type="UInt8" Name="types" format="appended" RangeMin=""                     RangeMax=""                     offset="548"                 />
+      </Cells>
+    </Piece>
+  </UnstructuredGrid>
+  <AppendedData encoding="base64">
+   _AQAAAACAAAAAAQAADAAAAA==eJxjYBjZAAABAAABAQAAAACAAAAAAQAAEQAAAA==eJxjYACBD/sZRigNAG7mNeE=AQAAAACAAAAAAQAAEQAAAA==eJxjYACBD/sZRigNAG7mNeE=AQAAAACAAAAAAwAAGwAAAA==eJxjuBCh9Musfz8DjIaBUfFR8REgDgDMsvIBAQAAAACAAACAAQAAYAAAAA==eJwrdGvYZfC1cgcDEDi2lu/KZ2iwB7FtpBv271muvAXELkRSY/q9aNe///VwNbjYML1W0g32MHHnlGarY/8gbJA4NjVmNjVWPJee7kBXU3OlxWrGP0w1hUPc/QAzCn2hAQAAAACAAAAAAQAAQAAAAA==eJwtxbUBgwAAADDcrUVa/P8vGUiWBMErdOTYiVNnzl24dOXajVt37j34469HT569+Oe/V2/effj05dsPq4AB8Q==AQAAAACAAACAAAAAMAAAAA==eJwtxdEGwCAAAMBMMkmSzEyy///KHrp7uSsc0cm3s4urm7uHH7/+PL38ewMzgAERAQAAAACAAAAQAAAACwAAAA==eJxjZkYFAAGoADE=
+  </AppendedData>
+</VTKFile>

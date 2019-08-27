@@ -17,18 +17,14 @@ echo "-------------------------------------"
 localdir=$(pwd)
 userfile=${localdir}/config.txt
 #
-generate=$(sed '2q;d' $userfile)
-testfile=$(sed '4q;d' $userfile)
-login=$(sed '6q;d' $userfile)
-hpcdir=$(sed '8q;d' $userfile)
-qsubdir=$(sed '12q;d' $userfile)
-mayavidir=$(sed '16q;d' $userfile)
-localy2d=$(sed '18q;d' $userfile)
-#giddir=$(sed '22q;d' $userfile)
+#generate=$(sed '2q;d' $userfile)
+testfile=$(sed '2q;d' $userfile)
+login=$(sed '4q;d' $userfile)
+hpcdir=$(sed '6q;d' $userfile)
+qsubdir=$(sed '8q;d' $userfile)
 giddir=$(which gid)
-y2ddir=$(sed '26q;d' $userfile)
-paraviewdir=$(sed '30q;d' $userfile)
-gmshdir=$(which gmsh)
+paraviewdir=$(sed '12q;d' $userfile)
+#gmshdir=$(which gmsh)
 echo "                                     "
 # get file name
 file=$(basename -- "$testfile")
@@ -36,7 +32,7 @@ filename="${file%%.*}"
 localresults="${localdir}/results/${filename}"
 fullfilename="${localdir}/${filename}"
 fulltestfile="${fullfilename}.y"
-logfile="${fullfilename}.unix.log"
+logfile="${fullfilename}.log"
 #
 rm $logfile                                  
 echo "-------------------------------------"    >> $logfile
@@ -55,8 +51,6 @@ echo "login: $login"                            >> $logfile
 echo "hpcdir: $hpcdir"                          >> $logfile
 echo "localdir: $localdir"                      >> $logfile
 echo "qsubdir: $qsubdir"                        >> $logfile
-echo "mayavidir: $mayavidir"                    >> $logfile
-echo "gmshdir: $gmshdir"                        >> $logfile
 echo "                                     "    >> $logfile
 echo "file: $file"                              >> $logfile
 echo "filename: $filename"                      >> $logfile
