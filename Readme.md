@@ -50,11 +50,11 @@ Tests performed using the original code produced unrealistic simulations. Theref
 - Operating System: Linux Ubuntu 14.04 LTS. The author used a Windows subsystem for Linux Ubuntu 18.04 LTS https://docs.microsoft.com/en-us/Windows/wsl/install-win10 due to lack of alternatives.
 
 - Software:
-    - Visualization Toolkit *VTK* version 5.8.0. Newer versions fail. Version 5.8.0 cannot be downloaded from https://*VTK*.org/download/ .
+    - Visualization Toolkit *VTK* version 5.8.0. Newer versions fail. Version 5.8.0 cannot be downloaded from https://VTK.org/download/ .
     - Paraview version 5.4.1. Paraview version 5.6.1 was tested as well. Other versions may work as well. https://www.paraview.org/download/
-    - The personal pre and post processor *GID* version 10.0.9 https://www.*GID*home.com/download/ . Newer versions are incompatible, as they do not support access to the *B2D* problem set.
+    - The personal pre and post processor *GID* version 10.0.9 https://www.GIDhome.com/download/ . Newer versions are incompatible, as they do not support access to the *B2D* problem set.
 
-Tests were perfomed on a local Windows 10 operating system using Windows subsystem for Linux Ubuntu 18.04 LTS. Resorting to remote Linux Ubuntu 14.04 LTS university server ese-pollux.ese.ic.ac.uk introduced extreme performance issues. For testing and small calculations, access to a remote server like the High Performance Computing *HPC* system at Imperial College https://www.imperial.ac.uk/computational-methods/*HPC*/ is possible, but inconvenient. 
+Tests were perfomed on a local Windows 10 operating system using Windows subsystem for Linux Ubuntu 18.04 LTS. Resorting to remote Linux Ubuntu 14.04 LTS university server ese-pollux.ese.ic.ac.uk introduced extreme performance issues. For testing and small calculations, access to a remote server like the High Performance Computing *HPC* system at Imperial College https://www.imperial.ac.uk/computational-methods/HPC/ is possible, but inconvenient. 
 The only reason to consider these remote servers is due to the module support for *VTK* version 5.8.0. Small test codes should ideally be able to be run locally instead if the dependencies were available to maximize code development.
 
 ## Usage 
