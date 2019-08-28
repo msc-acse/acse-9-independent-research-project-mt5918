@@ -1,0 +1,186 @@
+\setcopyright{acmcopyright}
+\copyrightyear{2019}
+\acmYear{2019}
+\acmDOI{123456789}
+\acmJournal{TOMACS}
+\acmVolume{1}
+\acmNumber{1}
+\acmArticle{1}
+\acmMonth{1}
+\acmSubmissionID{123-456-789}
+
+\usepackage{comment}
+\usepackage{textcomp}
+\usepackage{tabu}
+\usepackage{caption}
+\usepackage[scaled]{helvet}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{sansmath}
+\usepackage{textpos}
+\usepackage{ifxetex}
+\usepackage{stackengine}
+\usepackage{tabularx,longtable,multirow,subfigure} %hang caption
+\usepackage{fncylab}
+\usepackage{fancyhdr}
+\usepackage{color}
+
+\usepackage[cache=false]{minted}
+
+\usepackage{xcolor}
+
+\usepackage[ugly]{units}
+\usepackage{url}
+\usepackage{float}
+\usepackage{csquotes}
+\usepackage[english]{babel}
+\usepackage{amsmath}
+\usepackage{bm}
+\usepackage{mathtools}
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+\usepackage{graphicx}
+\usepackage[colorinlistoftodos]{todonotes}
+\usepackage{epstopdf} % automatically replace .eps with .pdf in graphics
+%\usepackage{backref}
+\usepackage{array}
+\usepackage{latexsym}
+\usepackage{etoolbox}
+\usepackage{enumerate} % for numbering with [a)] format 
+\usepackage{enumitem}
+\usepackage{tablefootnote}
+\usepackage{booktabs}
+%\usepackage{silence}
+\usepackage{multicol}
+\usepackage{multirow}
+%\usepackage{pbox, cellspace}
+%\usepackage{tikz}
+%\usepackage{chemformula}
+%\let\ce\ch
+%\usepackage{balance} 
+%\usetikzlibrary{shapes,snakes}
+
+%\cellspacetoplimit = 6pt
+%\cellspacebottomlimit = 12pt
+\usepackage{seqsplit}
+\let\oldseqsplit\seqsplit% Copy \seqsplit
+\renewcommand{\seqsplit}{% Redefine \seqsplit to...
+  \expandafter\oldseqsplit\expandafter}% ...expand its argument before processing it
+
+\newcommand{\str}[1]{{\ttfamily\seqsplit{#1}}}
+
+\usepackage[style=ACM-Reference-Format,backend=biber,backref=true,hyperref=true,giveninits=true,maxbibnames=999,sorting=none,citestyle=numeric,sortcites]{biblatex} 
+
+\usepackage{hyperref}
+\hypersetup{
+  pdftitle={},
+  pdfsubject={}, 
+  pdfauthor={},
+  pdfkeywords={}, 
+  pdfstartview=FitH,
+  pdfpagemode={UseOutlines},
+  bookmarksnumbered=true, 
+  bookmarksopen=true, 
+  colorlinks=true, 
+  citecolor=blue,
+  filecolor=blue, 
+  linkcolor=blue, 
+  urlcolor=blue,
+  hypertexnames=true,
+  breaklinks=true}
+  
+\definecolor{LightGray}{gray}{0.9}
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codepurple}{rgb}{0.58,0,0.82}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+%\usemintedstyle{borland}
+
+\setminted
+{
+frame=lines,
+%bgcolor=LightGray,
+fontsize=\footnotesize,
+breaklines,
+breakanywhere,
+linenos=true,
+autogobble,
+}
+
+\newenvironment{longlisting}{\captionsetup{type=listing}}{}
+
+\usepackage{listings}
+
+\definecolor{gray}{rgb}{0.4,0.4,0.4}
+\definecolor{darkblue}{rgb}{0.0,0.0,0.6}
+\definecolor{cyan}{rgb}{0.0,0.6,0.6}
+
+\lstdefinelanguage{XML}
+{
+  morestring=[b]",
+  morestring=[s]{>}{<},
+  morecomment=[s]{<?}{?>},
+  stringstyle=\color{black},
+  identifierstyle=\color{darkblue},
+  keywordstyle=\color{cyan},
+  morekeywords={xmlns,version,type}% list your attributes here,
+  breaklines=true,
+}
+
+ \lstdefinestyle{C}
+ {
+  belowcaptionskip=1\baselineskip,
+  frame=tb,
+  numbers=left,
+  language=C,
+  showstringspaces=false,
+  basicstyle=\footnotesize\ttfamily,
+  keywordstyle=\bfseries\color{green!40!black},
+  commentstyle=\itshape\color{purple!40!black},
+  identifierstyle=\color{blue},
+  stringstyle=\color{orange},
+  captionpos=b,
+  breaklines=true, postbreak=\mbox{\textcolor{red}{$\hookrightarrow$}\space}
+}
+
+\captionsetup[lstlisting]{labelsep=space,justification=raggedright,singlelinecheck=off}
+
+\usepackage{tcolorbox}
+\lstset{escapechar=£,style=C,linewidth=0.9\columnwidth, float=*h,columns=fullflexible,}
+\tcbuselibrary{listings}
+
+\usepackage{xr-hyper}
+\makeatletter
+\newcommand*{\addFileDependency}[1]{% argument=file name and extension
+  \typeout{(#1)}
+  \@addtofilelist{#1}
+  \IfFileExists{#1}{}{\typeout{No file #1.}}
+}
+\makeatother
+ 
+\newcommand*{\myext}[1]{%
+    \externaldocument{#1}%
+    \addFileDependency{#1.tex}%
+    \addFileDependency{#1.aux}%
+}
+
+\title[Elementary Implementation of VTK files in C]{Elementary Implementation of VTK XML files}
+\subtitle{A FEMDEM Application}
+
+\author{John-Paul Latham}
+\authornote{Imperial College London.}
+\authornote{Supervisor}
+\email{j.p.latham@imperial.ac.uk}
+
+\author{Ado Farsi}
+\authornotemark[1]
+\authornotemark[2]
+\email{ado.farsi@imperial.ac.uk}
+
+\author{Michael Trapp}
+\email{mt5918@ic.ac.uk}
+\orcid{1234-5678-9012}
+\authornotemark[1]
+
+\renewcommand{\shortauthors}{Latham et. al.}

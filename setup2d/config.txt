@@ -1,5 +1,5 @@
 # test file name with extension 
-test.y
+test1.y
 # bash SSH Login for Imperial College HPC 
 ssh mt5918@login.cx1.hpc.ic.ac.uk
 # hpc project directory 

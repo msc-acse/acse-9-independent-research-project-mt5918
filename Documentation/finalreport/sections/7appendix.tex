@@ -1,0 +1,45 @@
+\newpage
+\appendix
+
+\newcommand{\hbAppendixPrefix}{A}
+%
+\renewcommand{\thefigure}{\hbAppendixPrefix\arabic{figure}}
+\setcounter{figure}{0}
+\renewcommand{\thetable}{\hbAppendixPrefix\arabic{table}} 
+\setcounter{table}{0}
+\renewcommand{\theequation}{\hbAppendixPrefix\arabic{equation}} 
+\setcounter{equation}{0}
+
+\begin{table}
+    \caption{List of Y2D input simulation parameters \cite{Munjiza2000a}}
+    \begin{tabularx}{\columnwidth}{ll}
+    \\\midrule
+    \texttt{/YD/YDC/MCSTEP} & Maximum number of timesteps\\
+    \texttt{/YD/YDC/NCSTEP} & Current number of timesteps\\
+    \texttt{/YD/YDC/ISAVE}  & Restart file saving frequency\\
+    \texttt{/YD/YDC/DCGRAX} & Gravity in \texttt{X} Direction\\
+    \texttt{/YD/YDC/DCGRAY} & Gravity in \texttt{Y} Direction\\
+    \texttt{/YD/YDC/DCGRAZ} & Gravity in \texttt{Z} Direction\\
+    \texttt{/YD/YDC/DCSTEC} & Size of timestep\\
+    \texttt{/YD/YDC/DCTIME} & Current time\\
+    \texttt{/YD/YDC/DCURELX}& Not specified\\
+    \texttt{/YD/YDC/INITER} & Not specified\\
+    \texttt{/YD/YDC/ICOUTF} & Output frequency\\
+    \texttt{/YD/YDC/ICOUTI} & Current number of iterations\\
+    \texttt{/YD/YDC/DCSIZC} & Maximum size of coordinates\\
+    \texttt{/YD/YDC/DCSIZF} & Maximum size of force\\
+    \texttt{/YD/YDC/DCSIZS} & Maximum stress\\
+    \texttt{/YD/YDC/DCSIZV} & Maximum size of velocity\\
+    \texttt{/YD/YDC/DCSIZD} & Maximum size of displacement\\
+    \texttt{/YD/YDC/DCSIZA} & Maximum joint aperture\\
+    \texttt{/YD/YDC/DCSTEC} & Size of the time step\\
+    \texttt{/YD/YDC/DCTIME} & Current time\\
+    \texttt{/YD/YDC/DCRMPT} & Load ramping stage\\
+    \texttt{/YD/YDC/DCGRST} & Gravity settling stage\\
+    \texttt{/YD/YDC/ICSAVF} & Restart save frequency\\
+    \texttt{/YD/YDC/ICOUTP} & Number of chars for each number in output file \\
+    \texttt{/YD/YDC/ICFMTY} & Not specified\\
+    \texttt{/YD/YDC/ICIATY} & Not specified\\\bottomrule
+  \end{tabularx}
+  \label{tab:inpar}
+\end{table}

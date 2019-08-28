@@ -1,0 +1,76 @@
+\section{Discussion}
+\label{sec:discussion}
+
+\subsection{Simulation}
+\label{subsec:sim}
+
+The simulation clearly only produces realistic results for simple geometry setups. 
+
+\bigbreak
+Simulation results for more complex geometries are not realistic. Here, the projectile of prescribed material steel locally deforms on impact on the glass, while the glass ply does not show any reaction to the impact.
+
+\bigbreak
+A likely cause might be implementation issues in the pre-processing softwares. The pre-processors \texttt{GID} and \texttt{AutoCAD} proved to be extremely unreliable. 
+
+\bigbreak
+The input file prepared using \texttt{GID} presumably contained contradictory definitions compared to the code. For example, the nodes which make up each element seemed to be defined in oppose rotational direction \texttt{GID}. It may be possible that importing geometries from \texttt{AutoCAD} produced this error. Another possibility may be that the preprocessor may produce different outputs on different operating systems. As code for these programs is not publicly available, further investigation is difficult or imossible.  
+
+\bigbreak
+As the pre-processor \texttt{GID} proved to be unpredictable on different operating systems and code is not available, it is of significant importance to replace this software with more reliable alternatives such as \texttt{Gmesh} \cite{Geu09}.
+
+\bigbreak
+Another plausible cause might be errors in the original code, made by previous programmers. The code can clearly not be executed in a clean environment, such as the \texttt{Travis} environment in a \texttt{Github} repository. 
+
+\begin{lstlisting}[language=C, caption=Memory allocation error for variable \texttt{JCS0} in file \texttt{Yrd.c}, label=lst:JSC0error]
+JCS0=d1pjcs[propID];
+\end{lstlisting}
+
+One such error occurs in line $676$ in file \lstinline[language=C]{Yad.c}, see List. \ref{lst:JSC0error}. There seems to be a memory allocation error, although the circumstances are not quite clear to the author.
+
+\bigbreak
+Another error occurs at the beginning of the program in line $733$ in file \texttt{Yrd.c}, see List. \ref{lst:setlinebuferror}.
+
+\begin{lstlisting}[language=C, caption=\texttt{SETLINEBUF} Error in file \texttt{Yrd.c}, label=lst:setlinebuferror]
+#define SETLINEBUF(fcheck) setvbuf((fcheck), NULL, _IONBF, 0); //definition
+SETLINEBUF(ydc->fcheck); //line 733
+\end{lstlisting}
+
+The command \lstinline[language=C]{setvbuf((fcheck), NULL, _IONBF, 0)} presumably assigns an empty buffer \lstinline[language=C]{NULL} to some file \lstinline[language=C]{ydc->fcheck}. However, the specifics and the purpose are again unclear to the author.
+
+\subsection{VTK Implementation}
+
+It is extremely inconvenient and inefficient to debug the code using the \texttt{HPC} system by evaluating the error files of submitted jobs. The only sensible solution was to remove the dependencies such that the code is able to be run locally.
+
+\bigbreak
+The elementary implementation to generate valid \texttt{VTK} output files is successful. Both types of \texttt{VTK} output files are able to generated and simulated.
+
+\bigbreak
+The results have wide-ranging effects for further research. 
+
+\bigbreak
+The results can be applied to the \texttt{Y3D} code to also simulate three-dimensional output. The algorithm for the \texttt{Y3D} code is estimated to be of similar nature as for the \texttt{Y2D} code. It is expected that only minor adjustments to the output data are necessary. 
+
+\bigbreak
+The output algorithm may be further improved by the implementation of a compression algorithm to compress to the \texttt{VTK XML} files. This is indicated in the file by adding the option
+
+\begin{lstlisting}[language=XML, frame=none, numbers=none,]
+compressor="vtkZibDataCompressor"
+\end{lstlisting}
+
+to the header \cite{Kit}. Bunge \cite{Bun09} provides a promising algorithm, but it remains to be revised, adjusted and implemented.
+
+\bigbreak
+Most significantly, the modified code removes the obsolete \texttt{VTK} dependency, which until now prevented the \texttt{Y2D} program from being run locally. This paves the way for program debugging and testing. With the results from this paper, the program can be debugged without first being transferred to remote systems such as the \texttt{HPC} system. 
+
+\bigbreak
+ The next step should be to pass the \texttt{Github} repository build on a clean environment such as \texttt{Travis} by debugging the code locally. 
+
+\bigbreak
+Once the code is debugged, the next task is to add additional features to the code. One of these features may be inserting joint elements between elements of different materials. This would be particularly of interest for glass, considering the interface interaction between glass and \texttt{PVB}.
+
+\bigbreak
+Only after the debugging and testing should it be necessary to involve the \texttt{HPC} systems, i.e. to produce simulations of greater scale.
+
+\begin{acks}
+The author would like to thank the \texttt{AMCG} for enabling this project. Special gratitude pertains to course director Dr Gerard Gorman\footnote{g.gorman@imperial.ac.uk, Imperial College London, Department of Earth and Science} and course administrator Ying Ashton \footnote{y.ashton@imperial.ac.uk, Imperial College London, Department of Earth and Science} for support during this research. The author would also like to thank the project supervisors for coordinating the projects and for giving valuable advice. Finally, the author would like to thank his family for their support throughout the project.
+\end{acks}

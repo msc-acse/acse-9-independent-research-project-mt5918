@@ -1,0 +1,37 @@
+-------------------------------------
+-------------------------------------
+            LOG FILE                 
+-------------------------------------
+-------------------------------------
+                                     
+                                     
+                                     
+-------------------------------------
+            Variables                
+-------------------------------------
+testfile: test1.y
+login: ssh mt5918@login.cx1.hpc.ic.ac.uk
+hpcdir: mt5918@login.cx1.hpc.ic.ac.uk:/rds/general/user/mt5918/home/test
+localdir: /mnt/c/Users/micha/Documents/GitHub/acse-9-independent-research-project-mt5918/setup2d
+qsubdir: /opt/pbs/bin
+                                     
+file: test1.y
+filename: test1
+localresults: /mnt/c/Users/micha/Documents/GitHub/acse-9-independent-research-project-mt5918/setup2d/results/test1
+fullfilename: /mnt/c/Users/micha/Documents/GitHub/acse-9-independent-research-project-mt5918/setup2d/test1
+fulltestfile: /mnt/c/Users/micha/Documents/GitHub/acse-9-independent-research-project-mt5918/setup2d/test1.y
+logfile: /mnt/c/Users/micha/Documents/GitHub/acse-9-independent-research-project-mt5918/setup2d/test1.log
+                                     
+-------------------------------------
+            run program              
+-------------------------------------
+                                     
+                                     
+506804.pbs
+                                     
+-------------------------------------
+            visualize results        
+-------------------------------------
+                                     
+                                     
+Done                                 
