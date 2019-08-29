@@ -6,9 +6,9 @@
 
 # Architecture for this Repository
 
-This repository contains two separate folders. The first folder *Documentation* contains the project documentation. The second folder, *setup2d*, contains data and original program files to produce FEMDEM simulations. 
+This repository contains three separate folders. The first folder *Documentation* contains the project documentation. The second folder, *setup2d*, contains data and original program files to produce FEMDEM simulations. 
 
-The code for this project is stored in a third folder, *Y2D*, in another, private reposiotry. It contains modified code and program files which produce *VTK* output files.
+The code for this project is stored in a third folder, *Y2D*. It contains the original code, and the modified code and program files which produce *VTK* output files.
 
 *Travis* https://travis-ci.com/ is configured in file .travis.yml.
 
