@@ -6,7 +6,9 @@
 
 # Architecture for this Repository
 
-This repository contains three separate folders. The first folder *Documentation* contains the project documentation. The second folder, *setup2d*, contains data and original program files to produce FEMDEM simulations. The third folder, *Y2D*, contains modified code and program files which produce *VTK* output files.
+This repository contains two separate folders. The first folder *Documentation* contains the project documentation. The second folder, *setup2d*, contains data and original program files to produce FEMDEM simulations. 
+
+The code for this project is stored in a third folder, *Y2D*, in another, private reposiotry. It contains modified code and program files which produce *VTK* output files.
 
 *Travis* https://travis-ci.com/ is configured in file .travis.yml.
 
@@ -38,6 +40,8 @@ bash script.sh
 ```
 
 The script remakes the executables and runs the *Yf* program. The subfolder *results* contains valid vtu output files. The files can be opened as a time series using paraview.
+
+The primary code file for this project is file *Yod.c*, which contains the code to project the *VTK* output files. 
 
 # Folder *setup2d*
 
