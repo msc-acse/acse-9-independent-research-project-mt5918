@@ -1,2 +1,14 @@
-dist: xenial
-language: generic
+dist: trusty
+before_install:
+  - sudo apt-get install -y libgl1-mesa-dev libglu1-mesa-dev
+language: c
+
+script:
+  - cd data/NewCodes/Y2D/ 
+  - make clean && make
+  - chmod +x Yf
+  - ./Yf test.y
+<<<<<<< HEAD
+  
+=======
+>>>>>>> 88f6ac5646506aa45e929d939c26c9290b20b3e3
