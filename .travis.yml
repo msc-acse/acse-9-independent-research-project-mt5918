@@ -4,7 +4,7 @@ before_install:
 language: c
 
 script:
-  - cd data/NewCodes/Y2D/ 
+  - cd Y/data/NewCodes/Y2D/ 
   - make clean && make
   - chmod +x Yf
   - ./Yf test.y
