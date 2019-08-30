@@ -8,11 +8,11 @@
 
 This repository contains three separate folders. The first folder *Documentation* contains the project documentation. The second folder, *setup2d*, contains data and original program files to produce FEMDEM simulations. 
 
-The code for this project is stored in a third folder, *Y2D*. It contains the original code, and the modified code and program files which produce *VTK* output files.
+The code for this project is stored in a third folder, *Y*. It contains the original code, and the modified code and program files which produce *VTK* output files.
 
 *Travis* https://travis-ci.com/ is configured in file .travis.yml.
 
-# Folder *Y2D*
+# Folder *Y*
 
 ## System requirements and Installation
 
@@ -33,7 +33,7 @@ As both subfolders have very similar structure, only the structure of the subfol
 
 *finalcode* contains two folders, *test* and *Y2D*.
 
-Y2D, contains the code files of the *Y2D* *FEMDEM* code. *test* contains a bash script script.sh to produce the output files. The script is run via the command:
+*Y2D*, contains the code files of the *Y* *FEMDEM* code. *test* contains a bash script script.sh to produce the output files. The script is run via the command:
 
 ```bash
 bash script.sh
