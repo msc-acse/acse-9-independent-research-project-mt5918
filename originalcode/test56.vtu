@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<VTKFile type="UnstructuredGrid" version="0.1" byte_order="LittleEndian" compressor="vtkZLibDataCompressor">
+  <UnstructuredGrid>
+    <Piece NumberOfPoints="16"                   NumberOfCells="4"                   >
+      <PointData Scalars="Mean stress" Vectors="Contact force vectors" Tensors="Stress tensor">
+        <DataArray type="Float64" Name="Velocity vector" NumberOfComponents="3" format="appended" RangeMin="1.2466680288"         RangeMax="1.5680954418"         offset="0"                   />
+        <DataArray type="Float64" Name="Stress tensor" NumberOfComponents="9" format="appended" RangeMin="908535.05136"         RangeMax="5753251.6785"         offset="144"                 />
+        <DataArray type="Float64" Name="Sigma1" format="appended" RangeMin="-835078.56486"        RangeMax="4948281.851"          offset="352"                 />
+        <DataArray type="Float64" Name="Sigma3" format="appended" RangeMin="-3238565.7989"        RangeMax="2935031.7885"         offset="440"                 />
+        <DataArray type="Float64" Name="Sigma1 Vectors" NumberOfComponents="3" format="appended" RangeMin="0"                    RangeMax="4948281.851"          offset="532"                 />
+        <DataArray type="Float64" Name="Sigma3 vectors" NumberOfComponents="3" format="appended" RangeMin="0"                    RangeMax="3238565.7989"         offset="652"                 />
+        <DataArray type="Float64" Name="Differential stress" format="appended" RangeMin="1169368.0029"         RangeMax="3567230.6238"         offset="776"                 />
+        <DataArray type="Float64" Name="Mean stress" format="appended" RangeMin="-1661356.5259"        RangeMax="3941656.8197"         offset="864"                 />
+        <DataArray type="Float64" Name="Contact force vectors" NumberOfComponents="3" format="appended" RangeMin="0.021554848046"       RangeMax="0.021554848046"       offset="956"                 />
+      </PointData>
+      <CellData>
+      </CellData>
+      <Points>
+        <DataArray type="Float32" Name="Points" NumberOfComponents="3" format="appended" RangeMin="0.00055025916337"     RangeMax="1.4146102199"         offset="1016"                />
+      </Points>
+      <Cells>
+        <DataArray type="Int64" Name="connectivity" format="appended" RangeMin=""                     RangeMax=""                     offset="1204"                />
+        <DataArray type="Int64" Name="offsets" format="appended" RangeMin=""                     RangeMax=""                     offset="1280"                />
+        <DataArray type="UInt8" Name="types" format="appended" RangeMin=""                     RangeMax=""                     offset="1332"                />
+      </Cells>
+    </Piece>
+  </UnstructuredGrid>
+  <AppendedData encoding="base64">
+   _AQAAAACAAACAAQAAWAAAAA==eNqzsf14fNfeH/sX1J0wN3i5fT8DFNhQSdzlzazZ+9593s/gtY7Z5e9ye2qLM7wM526V/GrPcMx99X6buVQXP3D30QOFbz/sHbS0NtQ5HtlPbXEAmDqLOQ==AQAAAACAAACABAAAigAAAA==eNqbKp0SdVpJ/eAXu2msrbyWjgxQAOM/eSi6bHOWw0EGAmDqMDXn/K2j/9ecDnL8ZHV8zQ0uTrg5MP5dT99L+3rdHEeqObXFx2f5/3I86CGVa8jgJg0PTxh/9o/o9cW1ugdHqjnMmVUHfDV/H/h5hH3rZwdpeHjC+I0bVa92LVF2HKnmAADzTe7dAQAAAACAAACAAAAAMAAAAA==eNpzObnQJ5lfxNEFBy1UUVbm9yAIJ732q6kib43mQVz0BhPP/o7vmo64aAB6VDQhAQAAAACAAACAAAAAMQAAAA==eNr7pOj8LGirx8FPOOhw/jdPqlPcHHHRll8C7Fb+cjqIi567IPWJX4EwThoAesxBhQ==AQAAAACAAACAAQAARgAAAA==eNq7b//krOMuAcdputYZHKpsjgxQcJ9K4ofzF5x9dCzI8WhovavyBzmqi9MatITOmHDljqjjhxMpc871qjtSWxwATFJahQ==AQAAAACAAACAAQAASQAAAA==eNpjN//LMd/N+mDguuJPTbNcHBmggJ1K4rQG/krfW3aaOjnu9ZkSI5GqCrO3gVriXzuMVj1cKOgo+ETg2cFYhoPUFgcAfshZZQ==AQAAAACAAACAAAAALgAAAA==eNqTir7ub2/u7SiFg551kFHAaYcdTnrOW7Y33uaWOOl6pn0MN64b4qQBzykxZQ==AQAAAACAAACAAAAAMgAAAA==eNo79WJdTZqx2cFTOOh99W8yeoT8HHHRSwrnta2JtDyIi05KEZNNtBdwxEUDAEqgOTE=AQAAAACAAACAAQAAGQAAAA==eNpjuBCh9Musfz8DjIaBUXG6iAMAoQR5AQ==AQAAAACAAADAAAAAegAAAA==eNpbGSm2y2tV4g4GIGBy0NjF+7/eHsROEmrYv2e58hYQ2+PHqn1rl6+yA7GnOqjt+vcPoeYfFvWcF7X2B6/SAosnCDXYw9TcjmOxWvS3Hi4OU290Tsv+/kqI+mojAavfb4q2o6sRZ2a2OgjVy/lxlV3HCoh7AL3LPFY=AQAAAACAAABgAAAAJgAAAA==eNotxTEOABAQALAjiBP8/7kG7dKIr7i6uXt4Or28fXz9AAuQAFU=AQAAAACAAAAgAAAAEwAAAA==eNpjZoAANijNCaV5oDQAAgAAHw==AQAAAACAAAAEAAAADAAAAA==eNpjZWVlBQAANgAV
+  </AppendedData>
+</VTKFile>
